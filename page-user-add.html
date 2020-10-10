@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="GHA School Shop">
+
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Great Heights Academy">
+    <meta property="og:title" content="Great Heights Academy School Shop">
+
+    <meta property="og:description" content="GHA School Shop">
+    <title>GHA School Shop</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css"> -->
+  </head>
+  <body class="app sidebar-mini rtl">
+    <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="index.html">GHA School Shop</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <!-- Navbar Right Menu-->
+      <ul class="app-nav">
+        <!-- User Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li><a class="dropdown-item" href="index.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="static/images/user.png" alt="User Image">
+        <div>
+          <p class="app-sidebar__user-name">Admin Admin</p>
+          <p class="app-sidebar__user-designation">Shop Admin</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li><a class="app-menu__item" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Student Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="page-student-list.html"><i class="icon fa fa-circle-o"></i> Student List</a></li>
+            <li><a class="treeview-item" href="page-student-add.html"><i class="icon fa fa-circle-o"></i> Add New Student</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Staff Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item active" href="page-user-list.html"><i class="icon fa fa-circle-o"></i> Staff List</a></li>
+            <li><a class="treeview-item" href="page-user-add.html"><i class="icon fa fa-circle-o"></i> Add New Staff</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">My Shop</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Stock Management</a></li>
+            <li><a class="treeview-item" href="page-shop-purchase.html"><i class="icon fa fa-circle-o"></i> My Purchases</a></li>
+          </ul>
+        </li>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Reports</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="page-report-transaction.html"><i class="icon fa fa-circle-o"></i> Shopping Report</a></li>
+            <li><a class="treeview-item" href="page-report-comprehensive.html"><i class="icon fa fa-circle-o"></i> Comprehensive Report</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-edit"></i> Staff Management</h1>
+          <p>Add Staff</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">Staff</li>
+          <li class="breadcrumb-item"><a href="#">Add</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        
+        <div class="col-md-12">
+          <div class="tile">
+            <h3 class="tile-title">Add User</h3>
+            <div class="tile-body">
+              <form class="form-horizontal">
+                <div class="form-group row">
+                  <label class="control-label col-md-3">Staff Name</label>
+                  <div class="col-md-8">
+                    <input class="form-control" type="text" placeholder="Enter full name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-3">Login UserName</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" placeholder="Enter username">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-3">Login Password</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="password" placeholder="Enter Password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-3" for="user_role"> User Role</label>
+                    <div class="col-md-8">
+                      <select class="form-control" id="user_role">
+                        <option>Select</option>
+                        <option>Admin User</option>
+                        <option>Sales Staff</option>
+                      </select>
+                    </div>                  
+                </div>
+                <div class="form-group row">
+                  <label class="control-label col-md-3">Identity Pic</label>
+                  <div class="col-md-8">
+                    <input class="form-control" type="file">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="tile-footer">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-3">
+                  <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Add</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearix"></div>
+      </div>
+    </main>
+    <!-- Essential javascripts for application to work-->
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="static/js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    
+  </body>
+</html>

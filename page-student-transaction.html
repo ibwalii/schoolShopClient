@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="GHA School Shop">
+
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Great Heights Academy">
+    <meta property="og:title" content="Great Heights Academy School Shop">
+
+    <meta property="og:description" content="GHA School Shop">
+    <title>GHA School Shop</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css"> -->
+  </head>
+  <body class="app sidebar-mini rtl">
+    <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="index.html">GHA School Shop</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <!-- Navbar Right Menu-->
+      <ul class="app-nav">
+        <!-- User Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li><a class="dropdown-item" href="index.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="static/images/user.png" alt="User Image">
+        <div>
+          <p class="app-sidebar__user-name">Admin Admin</p>
+          <p class="app-sidebar__user-designation">Shop Admin</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li><a class="app-menu__item active" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Student Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu is-expanded">
+            <li><a class="treeview-item active" href="page-student-list.html"><i class="icon fa fa-circle-o"></i> Student List</a></li>
+            <li><a class="treeview-item" href="page-student-add.html"><i class="icon fa fa-circle-o"></i> Add New Student</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Staff Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Staff List</a></li>
+            <li><a class="treeview-item" href="#" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Add New Staff</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">My Shop</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Stock Management</a></li>
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> My Purchases</a></li>
+           
+          </ul>
+        </li>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Reports</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Shopping Report</a></li>
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Comprehensive Report</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-file-text-o"></i> Transactions</h1>
+          <p>Transaction Records</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">Student</li>
+          <li class="breadcrumb-item"><a href="#">Transactions</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <form class="row">
+
+                <div class="form-group col-4">
+                    <label class="control-label">Start Date</label>
+                    <input class="form-control filterdate" id="startdate" type="text" placeholder="Select Date">
+                  </div>
+                  <div class="form-group col-4">
+                    <label class="control-label">End Date</label>
+                    <input class="form-control filterdate" id="enddate" type="text" placeholder="Select Date">
+                  </div>
+                <div class="form-group col-4 align-self-end">
+                  <button class="btn btn-primary" type="button" id="filterTransactionsBtn"><i class="fa fa-fw fa-lg fa-check-circle" ></i>Filter Transactions</button>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <section class="invoice">
+              <div class="row mb-4">
+                <div class="col-6">
+                  <h2 class="page-header"><i class="fa fa-globe"></i> Transaction Report</h2>
+                </div>
+                <div class="col-6">
+                  <h5 class="text-right">Date: 01/01/2019</h5>
+                </div>
+              </div>
+              <div class="row invoice-info" id="studentInfo">
+                <!-- <div class="col-8">
+                    <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Amal Kazir</th>
+                              <td>Class</td>
+                              <td>JSS 1A</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th>House</th>
+                              <td>Blue</td>
+                              <th>Weekly Limit</th>
+                              <td>₦ 2, 000</td>
+                            </tr>
+                            <tr>
+                              <th>Account Balance</th>
+                              <th>₦ 2, 000</th>
+                              <th>Total Transactions</th>
+                              <th> 100</th>
+                            </tr>
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                </div>
+                <div class="col-4">
+                    <img src="static/images/student/11_408.png" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student">
+                </div> -->
+              </div>
+              <hr>
+              <div class="row">                 
+                <div class="col-12 table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Transaction No.</th>
+                        <th>Amount</th>
+                        <th>Sold By</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody id="transactionsList">
+                      <!-- <tr>
+                        <td>1</td>
+                        <td>₦ 2, 000</td>
+                        <td>Shop 1</td>
+                        <td>12/12/2019</td>
+                      </tr>
+                      
+                      <tr>
+                        <th class="text-right">Total</th>
+                        <td colspan="2">₦ 3, 000</td>
+                      </tr>
+                      <tr>
+                        <th class="text-right">Special Shoppings</th>
+                        <td colspan="2">₦ 2, 000</td>
+                      </tr>
+                      <tr>
+                        <th class="text-right">Grand Total</th>
+                        <td colspan="2">₦ 5, 000</td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row d-print-none mt-2">
+                <div class="col-12 text-right"><a class="btn btn-primary" href="javascript:window.print();" target="_blank"><i class="fa fa-print"></i> Print</a></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Essential javascripts for application to work-->
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="static/js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    <script type="text/javascript" src="static/js/plugins/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="static/js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript" src="static/js/plugins/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+        
+        $('.filterdate').datepicker({
+            format: "yyyy/mm/dd",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+    $(document).ready(function(){
+      var studentID = localStorage.getItem('currentStudent');
+      var currentStudentRegNum = localStorage.getItem('currentStudentRegNum');
+      var startdate = "2020-02-07";
+      var enddate = "2020-02-10";
+
+      // GETTING DATE VALUES
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var yd = String(today.getDate() - 1).padStart(2, '0'); // day -1 for yesterday
+      var yw = String(today.getDate() - 7).padStart(2, '0'); // day -7 for yesterday
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+
+      today =  yyyy + '/' + mm + '/'  + dd;
+      yesterday =  yyyy + '/' + mm + '/'  + yd;
+      weekday =  yyyy + '/' + mm + '/'  + yw;
+      
+
+      data = JSON.stringify({regNum:currentStudentRegNum, startDate:weekday, endDate: today});
+
+        req = $.ajax({
+          url: 'http://localhost:5000/reports',
+          type:'post',
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: data
+
+        });
+        req.done(function(data){
+          console.log(data);
+          
+          sdata = data.student;
+          $('#studentInfo').html('<div class="col-8"><div class="table-responsive"><table class="table"><thead><tr><th>Name</th><th>'+sdata.name+'</th><td>Class</td><td>'+sdata.class+'</td></tr></thead><tbody><tr><th>House</th><td>'+sdata.house+'</td><th>Weekly Limit</th><td>₦ '+sdata.weeklyLimit+'.00</td></tr><tr><th>Account Balance</th><th>₦ '+sdata.balance+'.00</th><th>Total Transactions</th><th> 100</th></tr></tbody></table></div></div><div class="col-4"> <img src="static/images/student/11_408.png" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student"></div>');
+
+          transactions = sdata.transactions;
+          totalAmount = 0;
+          totalSpecial = 0;
+          count = 1;
+          transactions.forEach(function(item){
+            if(!item.item){
+              totalAmount = totalAmount + item['amount'];
+              $('#transactionsList').append('<tr><td>'+count+'</td><td>₦ '+item.amount+'.00</td><td>Shop 1</td><td>'+item.date+'</td></tr>');
+              count++;
+            }else{
+              totalSpecial = totalSpecial + item['amount'];
+            }
+          });
+          $('#transactionsList').append('<tr><th class="text-right">Total</th><td colspan="2">₦ '+totalAmount+'.00</td></tr>');
+          // data.specialTransactions.forEach(function(item){
+          //   totalSpecial = totalSpecial + item['amount'];
+          // });
+          $('#transactionsList').append('<tr><th class="text-right">Special Shoppings</th><td colspan="2">₦ '+totalSpecial+'.00</td></tr>');
+          $('#transactionsList').append('<tr><th class="text-right">Grant Total</th><td colspan="2">₦ '+ (totalAmount+totalSpecial)+'.00</td></tr>');
+        });
+    
+    
+        $(document).on('click', '#filterTransactionsBtn', function(){
+          startdate = $('#startdate').val();
+          enddate = $('#enddate').val();
+          if(!enddate && !startdate){
+            $('#startdate').val(yesterday)
+            $('#enddate').val(today);
+            startdate = yesterday;
+            enddate = today
+          }
+          else if(!enddate){
+            enddate = today;
+          }
+        data = JSON.stringify({regNum:currentStudentRegNum, startDate:startdate, endDate: enddate});
+
+        req = $.ajax({
+          url: 'http://localhost:5000/reports',
+          type:'post',
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: data
+
+        });
+        req.done(function(data){
+          console.log(data);
+          sdata = data.student;
+          // $('#studentInfo').html('<div class="col-8"><div class="table-responsive"><table class="table"><thead><tr><th>Name</th><th>'+sdata.name+'</th><td>Class</td><td>'+sdata.class+'</td></tr></thead><tbody><tr><th>House</th><td>'+sdata.house+'</td><th>Weekly Limit</th><td>₦ '+sdata.weeklyLimit+'.00</td></tr><tr><th>Account Balance</th><th>₦ '+sdata.balance+'.00</th><th>Total Transactions</th><th> 100</th></tr></tbody></table></div></div><div class="col-4"> <img src="static/images/student/11_408.png" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student"></div>');
+
+          transactions = data.report;
+          totalAmount = 0;
+          totalSpecial = 0;
+          count = 1;
+          $('#transactionsList').html('');
+          transactions.forEach(function(item){
+            if(!item.item){
+              totalAmount = totalAmount + item['amount'];
+              $('#transactionsList').append('<tr><td>'+count+'</td><td>₦ '+item.amount+'.00</td><td>Shop 1</td><td>'+item.date+'</td></tr>');
+              count++;
+            }else{
+              totalSpecial = totalSpecial + item['amount'];
+            }
+          });
+          $('#transactionsList').append('<tr><th class="text-right">Total</th><td colspan="2">₦ '+totalAmount+'.00</td></tr>');
+          // data.specialTransactions.forEach(function(item){
+          //   totalSpecial = totalSpecial + item['amount'];
+          // });
+          $('#transactionsList').append('<tr><th class="text-right">Special Shoppings</th><td colspan="2">₦ '+totalSpecial+'.00</td></tr>');
+          $('#transactionsList').append('<tr><th class="text-right">Grant Total</th><td colspan="2">₦ '+ (totalAmount+totalSpecial)+'.00</td></tr>');
+        });
+  
+
+        });
+    });
+
+   
+      </script>
+    
+  </body>
+</html>

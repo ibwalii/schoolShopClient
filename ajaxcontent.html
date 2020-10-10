@@ -1,0 +1,224 @@
+<form class="form-horizontal" method="GET" action="page-student-update.html">
+                <div class="form-group row">
+                    <label class="control-label col-md-3">Student ID</label>
+                    <div class="col-md-2">
+                        13/1001
+                    </div>
+                    <div class="col-md-6">
+                      <input class="form-control" type="text" name="form_studentID" id="form_studentID" placeholder="Student ID">
+                    </div>
+                  </div>
+                <div class="form-group row">
+                  <label class="control-label col-md-3">Student Name</label>
+                  <div class="col-md-2">
+                    Amal Kazir
+                  </div>
+                  <div class="col-md-6">
+                    <input class="form-control" type="text" placeholder="Enter full name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-3" for="student_class"> Class</label>
+                    <div class="col-md-2">
+                        JSS 1A
+                    </div>
+                    <div class="col-md-6">
+                      <select class="form-control" id="student_class">
+                        <option>JSS 1A</option>
+                        <option>JSS 1B</option>
+                        <option>JSS 2A</option>
+                        <option>JSS 2B</option>
+                        <option>JSS 3A</option>
+                      </select>
+                    </div>                  
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-3" for="student_class"> House</label>
+                    <div class="col-md-2">
+                        Yellow House
+                    </div>
+                    <div class="col-md-6">
+                      <select class="form-control" id="student_class">
+                        <option>Red House</option>
+                        <option>Green House</option>
+                        <option>Blue House</option>
+                        <option>Yellow House</option>
+                      </select>
+                    </div>                  
+                </div>
+                
+                <div class="form-group row">
+                  <label class="control-label col-md-3">Weekly Spending Limit</label>
+                  <div class="col-md-2">
+                    ₦ 800.00
+                  </div>  
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputAmount">Amount (in Naira)</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend"><span class="input-group-text">₦</span></div>
+                          <input class="form-control" id="exampleInputAmount" type="text" placeholder="Amount">
+                          <div class="input-group-append"><span class="input-group-text">.00</span></div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="control-label col-md-3">Identity Pic</label>
+                  <div class="col-md-8">
+                    <input class="form-control" type="file">
+                  </div>
+                </div>
+                <div class="tile-footer">
+                  <div class="row">
+                    <div class="col-md-8 col-md-offset-3">
+                      <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update Info</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="page-student-info.html"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+
+
+
+               <tr>
+                    <td>Barakatu Aliyu</td>
+                    <td>barakatu</td>
+                    <td>Sales Staff</td>
+                    <td>On 31/01/2020</td>
+                    <td>
+                        <button class="btn btn-info" data-stf_id="1" data-std_name="Aisha Babakura Babagana" type="button"><i class="icon fa fa-trash-o"></i> Update</button>
+                        <button class="btn btn-outline-danger delstf" data-stf_id="1" data-std_name="Aisha Babakura Babagana" type="button"><i class="icon fa fa-trash-o"></i> Delete</button>
+                    </td>                   
+                  </tr>
+
+
+
+                  <h3 class="tile-title">'+data.name+'</h3>
+            <div class="tile-body">
+                <table class="table table-sm">
+                      <tr>
+                        <td rowspan='4'>
+                            <img src="../static/images/student/11_408.png" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="Student"> 
+                        </td>
+                      </tr>           
+                      <tr>
+                        <th>House</th>
+                        <td>'+data.house+'</td>
+                        <th>Class</th>
+                        <td>'+data.class+'</td>
+                        <th>Withrawal Limit</th>
+                        <td>₦ '+data.weeklyLimit+'.00</td>
+                      </tr>
+                      <tr>
+                        <th>Account Balance</th>
+                        <td>₦ '+data.balance+'.00</td>
+                        <th>Last Deposit</th>
+                        <td>₦ '+data.deposits[0]["amount"]+'.00</td>
+                        <td>'+data.deposits[0]["date"]+'</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                <button class="btn btn-info" type="button">More Actions</button>
+                                <div class="btn-group" role="group">
+                                  <button class="btn btn-info dropdown-toggle" id="btnGroupDrop3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <div class="dropdown-menu dropdown-menu-right">
+                                      <a class="dropdown-item" href="page-student-update.html">Update Student</a>
+                                      <a class="dropdown-item" href="page-student-transaction.html">All Transactions</a>
+                                      <a class="dropdown-item" href="page-student-deposit.html">All Deposits</a>
+                                      <a class="dropdown-item" href="page-student-accountstatement.html">Individual Report</a>
+                                  </div>
+                                </div>
+                            </div>
+                        </td>
+                      </tr>
+                      
+                  </table>    
+            </div>
+
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID Number</th>
+                  <th>'+data.regNum+'</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td>'+data.name+'</td>
+                </tr>
+                <tr>
+                    <td>House</td>
+                    <td>'+data.house+'</td>
+                  </tr>
+              </tbody>
+            </table>
+
+           
+              <div class="col-3">
+                  <img src="../static/images/student/11_408.png" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student">
+              </div>
+              <div class="col-8">
+                  <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Amal Kazir</th>
+                            <td>Class</td>
+                            <td>JSS 1A</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th>House</th>
+                            <td>Blue</td>
+                            <th>Weekly Limit</th>
+                            <td>₦ 2, 000</td>
+                          </tr>
+                          <tr>
+                            <th>Account Balance</th>
+                            <th>₦ 2, 000</th>
+                            <th>Weekly Balance</th>
+                            <th>₦ 100</th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+              </div>
+
+
+              <div class="col-8">
+                  <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>'+data.name'+</th>
+                            <td>Class</td>
+                            <td>'+data.name'+</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th>House</th>
+                            <td>'+data.house'+</td>
+                            <th>Weekly Limit</th>
+                            <td>₦ '+data.weeklyLimit'+.00</td>
+                          </tr>
+                          <tr>
+                            <th>Account Balance</th>
+                            <th>₦ '+data.balance+'0</th>
+                            <th>Total Transactions</th>
+                            <th> 100</th>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+              </div>
+              <div class="col-4">
+                  <img src="../static/images/student/11_408.png" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student">
+              </div>
+        
