@@ -90,7 +90,7 @@
             <section class="invoice">
               <div class="row mb-4">
                 <div class="col-6">
-                  <h2 class="page-header"><i class="fa fa-globe"></i> Transaction Report</h2>
+                  <h2 class="page-header"><i class="fa fa-globe"></i> My Transaction Report</h2>
                 </div>
                 <div class="col-6">
                   <h5 class="text-right">Date: 01/01/2019</h5>
@@ -105,33 +105,12 @@
                         <th>Transaction No.</th>
                         <th>Student ID</th>
                         <th>Student Name</th>
-                        <th>Class</th>
                         <th>Amount</th>
                         <th>Date</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>13/001</td>
-                        <td>Ibrahim Bakari</td>
-                        <td>JSS 1A</td>
-                        <td>₦ 10, 000</td>
-                        <td>12/12/2019</td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>13/001</td>
-                        <td>Ibrahim Bakari</td>
-                        <td>JSS 1A</td>
-                        <td>₦ 10, 000</td>
-                        <td>12/12/2019</td>
-                      </tr>
-                      <tr>
-                        <th colspan="4" class="text-right">Total</th>
-                        <td colspan="2">₦ 3, 000</td>
-                      </tr>
-                      
+                    <tbody id="transactionsList">
+                      <!-- AJAX REQUEST BELOW -->
                     </tbody>
                   </table>
                 </div>
@@ -159,6 +138,52 @@
             format: "dd/mm/yyyy",
             autoclose: true,
             todayHighlight: true
+        });
+
+        $(document).ready(function(){
+
+          var studentID = localStorage.getItem('currentStudent');
+          var userID = localStorage.getItem('userID');
+          var startdate = "";
+          var enddate = "";
+
+          // GETTING DATE VALUES
+          var today = new Date();
+          var dd = String(today.getDate()).padStart(2, '0');
+          var yd = String(today.getDate() - 1).padStart(2, '0'); // day -1 for yesterday
+          var td = String(today.getDate() + 1).padStart(2, '0'); // day -1 for yesterday
+          var yw = String(today.getDate() - 7).padStart(2, '0'); // day -7 for last week
+          var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+          var yyyy = today.getFullYear();
+
+          today =  yyyy + '/' + mm + '/'  + dd;
+          tomorotoday =  yyyy + '/' + mm + '/'  + td;
+          yesterday =  yyyy + '/' + mm + '/'  + yd;
+          weekday =  yyyy + '/' + mm + '/'  + yw;
+          
+          data = JSON.stringify({startDate:weekday, endDate: tomorotoday});
+          req = $.ajax({
+            url: 'http://localhost:5000/reports',
+            type:'post',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: data
+
+          });
+          req.done(function(data){
+            data = data.report;
+            totalAmount = 0;
+            count = 1;
+            data.forEach(function(item){
+                if(item['item'] == null && item['userID'] == userID){
+                  totalAmount = totalAmount + item['amount'];    
+                  $('#transactionsList').append('<tr><td>'+count+'</td><td>'+item.regNum+'</td><td>'+item.studentName+'</td><td class="text-right">₦ '+item.amount+'.00</td><td>'+item.date+'</td></tr>');
+                  count++;
+                }
+            });
+            $('#transactionsList').append('<tr><th class="text-right" colspan="3">Total</th><td colspan="1" class="text-right">₦ '+totalAmount+'.00</td></tr>');
+          });
+          
         });
 
       </script>

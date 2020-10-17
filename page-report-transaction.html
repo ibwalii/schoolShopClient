@@ -221,16 +221,18 @@
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var yd = String(today.getDate() - 1).padStart(2, '0'); // day -1 for yesterday
-        var yw = String(today.getDate() - 7).padStart(2, '0'); // day -7 for yesterday
+        var td = String(today.getDate() + 1).padStart(2, '0'); // day -1 for yesterday
+        var yw = String(today.getDate() - 7).padStart(2, '0'); // day -7 for last week
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
 
         today =  yyyy + '/' + mm + '/'  + dd;
+        tomorotoday =  yyyy + '/' + mm + '/'  + td;
         yesterday =  yyyy + '/' + mm + '/'  + yd;
         weekday =  yyyy + '/' + mm + '/'  + yw;
 
         
-        data = JSON.stringify({startDate:weekday, endDate: today});
+        data = JSON.stringify({startDate:weekday, endDate: tomorotoday});
 
           req = $.ajax({
             url: 'http://localhost:5000/reports',
@@ -306,7 +308,7 @@
             data.forEach(function(item){
                 if(item['item'] === null){
                   totalAmount = totalAmount + item['amount'];    
-                  $('#transactionsList').append('<tr><td>'+count+'</td><td>'+item.regNum+' number </td><td>'+item.studentName+'</td><td class="text-right">₦ '+item.amount+'.00</td><td>'+item.userName+'</td><td>'+item.date+'</td></tr>');
+                  $('#transactionsList').append('<tr><td>'+count+'</td><td>'+item.regNum+' </td><td>'+item.studentName+'</td><td class="text-right">₦ '+item.amount+'.00</td><td>'+item.userName+'</td><td>'+item.date+'</td></tr>');
                   count++;
                 }else{
                   totalSpecial = totalSpecial + item['amount'];

@@ -229,10 +229,13 @@
     $('body').on('submit', '#specialForm', function(e){
           e.preventDefault();
           var studentID = localStorage.getItem('currentStudent');
+          var userID = localStorage.getItem('userID');
           var amount = parseInt($('#amount').val());
           var item = $('#item').val();
+         
 
-          data = JSON.stringify({studentID:studentID, amount:amount, item: item});
+          data = JSON.stringify({studentID:studentID, amount:amount, item: item, userID: userID});
+
         req = $.ajax({
           url: 'http://localhost:5000/transactions',
           type:'post',

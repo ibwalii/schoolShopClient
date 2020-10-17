@@ -166,25 +166,6 @@
                       </tr>
                     </thead>
                     <tbody id="transactionsList">
-                      <!-- <tr>
-                        <td>1</td>
-                        <td>₦ 2, 000</td>
-                        <td>Shop 1</td>
-                        <td>12/12/2019</td>
-                      </tr>
-                      
-                      <tr>
-                        <th class="text-right">Total</th>
-                        <td colspan="2">₦ 3, 000</td>
-                      </tr>
-                      <tr>
-                        <th class="text-right">Special Shoppings</th>
-                        <td colspan="2">₦ 2, 000</td>
-                      </tr>
-                      <tr>
-                        <th class="text-right">Grand Total</th>
-                        <td colspan="2">₦ 5, 000</td>
-                      </tr> -->
                     </tbody>
                   </table>
                 </div>
@@ -219,8 +200,8 @@
     $(document).ready(function(){
       var studentID = localStorage.getItem('currentStudent');
       var currentStudentRegNum = localStorage.getItem('currentStudentRegNum');
-      var startdate = "2020-02-07";
-      var enddate = "2020-02-10";
+      // var startdate = "2020-02-07";
+      // var enddate = "2020-02-10";
 
       // GETTING DATE VALUES
       var today = new Date();
@@ -249,7 +230,7 @@
           console.log(data);
           
           sdata = data.student;
-          $('#studentInfo').html('<div class="col-8"><div class="table-responsive"><table class="table"><thead><tr><th>Name</th><th>'+sdata.name+'</th><td>Class</td><td>'+sdata.class+'</td></tr></thead><tbody><tr><th>House</th><td>'+sdata.house+'</td><th>Weekly Limit</th><td>₦ '+sdata.weeklyLimit+'.00</td></tr><tr><th>Account Balance</th><th>₦ '+sdata.balance+'.00</th><th>Total Transactions</th><th> 100</th></tr></tbody></table></div></div><div class="col-4"> <img src="static/images/student/11_408.png" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student"></div>');
+          $('#studentInfo').html('<div class="col-8"><div class="table-responsive"><table class="table"><thead><tr><th>Name</th><th>'+sdata.name+'</th><td>Class</td><td>'+sdata.class+'</td></tr></thead><tbody><tr><th>House</th><td>'+sdata.house+'</td><th>Weekly Limit</th><td>₦ '+sdata.weeklyLimit+'.00</td></tr><tr><th>Account Balance</th><th>₦ '+sdata.balance+'.00</th><th>Total Transactions</th><th> 100</th></tr></tbody></table></div></div><div class="col-4"> <img src="http://127.0.0.1:5000/static/images/'+sdata.passport+'" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student"></div>');
 
           transactions = sdata.transactions;
           totalAmount = 0;

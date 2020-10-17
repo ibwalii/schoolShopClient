@@ -199,14 +199,15 @@
           data: {studentID: studentID},
         });
         req.done(function(data){
-
-          $('.studentUpdate').html('<form class="form-horizontal" method="POST" action="page-student-update.html" id="studentUpdateForm"><div class="form-group row"> <label class="control-label col-md-3">Student ID</label><div class="col-md-2">'+ data.regNum +'</div><div class="col-md-6"> <input class="form-control" type="text" name="regNum" id="regNum" placeholder="Student ID" value="'+ data.regNum +'"></div></div><div class="form-group row"> <label class="control-label col-md-3">Student Name</label><div class="col-md-2">'+ data.name +'</div><div class="col-md-6"> <input class="form-control" type="text" id="name" name="name" placeholder="Enter full name" value="'+ data.name +'"></div></div><div class="form-group row"> <label class="control-label col-md-3" for="class"> Class</label><div class="col-md-2"> '+ data.class +'</div><div class="col-md-6"> <select class="form-control" id="class" name="class" required><option value="">Select Class</option><option value="1">JSS 1A</option><option value="2">JSS 1B</option><option value="3">JSS 2A</option><option>JSS 2B</option><option>JSS 3A</option> </select></div></div><div class="form-group row"> <label class="control-label col-md-3" for="house"> House</label><div class="col-md-2"> '+ data.house +'</div><div class="col-md-6"> <select class="form-control" id="house" name="house" required><option value="">'+ data.house +'</option><option value="4">Red House</option><option value="3">Green House</option><option value="1">Blue House</option><option value="2">Yellow House</option> </select></div></div><div class="form-group row"> <label class="control-label col-md-3">Weekly Spending Limit</label><div class="col-md-2"> '+ data.weeklyLimit +'</div><div class="col-md-6"><div class="form-group"> <label class="sr-only" for="limit">Amount (in Naira)</label><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">₦</span></div> <input class="form-control" id="limit" name="limit" type="text" placeholder="Amount" value="'+ data.weeklyLimit +'"><div class="input-group-append"><span class="input-group-text">.00</span></div></div></div></div></div><div class="form-group row"> <label class="control-label col-md-3">Current Picture <img src="http://localhost:5000/static/images/'+ data.passport +'" height="50" id="studentPic" placeholder="Student Pic"></label><div class="col-md-8"> <input class="form-control" type="file" id="passport" name="passport"></div></div><div class="tile-footer"><div class="row"><div class="col-md-8 col-md-offset-3"> <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update Info</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="page-student-info.html"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a></div></div></div></form>');
+          console.log(data);
+          $('.studentUpdate').html('<form class="form-horizontal" method="POST" action="page-student-update.html" id="studentUpdateForm"><div class="form-group row"> <label class="control-label col-md-3">Student ID</label><div class="col-md-2">'+ data.regNum +'</div><div class="col-md-6"> <input class="form-control" type="text" name="regNum" id="regNum" placeholder="Student ID" value="'+ data.regNum +'"></div></div><div class="form-group row"> <label class="control-label col-md-3">Student Name</label><div class="col-md-2">'+ data.name +'</div><div class="col-md-6"> <input class="form-control" type="text" id="name" name="name" placeholder="Enter full name" value="'+ data.name +'"></div></div><div class="form-group row"> <label class="control-label col-md-3" for="class"> Class</label><div class="col-md-2"> '+ data.class +'</div><div class="col-md-6"> <select class="form-control" id="class" name="class" required><option value="">Select Class</option><option value="1">JSS 1A</option><option value="2">JSS 1B</option><option value="3">JSS 2A</option><option>JSS 2B</option><option>JSS 3A</option> </select></div></div><div class="form-group row"> <label class="control-label col-md-3" for="house"> House</label><div class="col-md-2"> '+ data.house +'</div><div class="col-md-6"> <select class="form-control" id="house" name="house" required><option value="">'+ data.house +'</option><option value="4">Red House</option><option value="3">Green House</option><option value="1">Blue House</option><option value="2">Yellow House</option> </select></div></div><div class="form-group row"> <label class="control-label col-md-3">Weekly Spending Limit</label><div class="col-md-2"> '+ data.weeklyLimit +'</div><div class="col-md-6"><div class="form-group"> <label class="sr-only" for="limit">Amount (in Naira)</label><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">₦</span></div> <input class="form-control" id="limit" name="limit" type="text" placeholder="Amount" value="'+ data.weeklyLimit +'"><div class="input-group-append"><span class="input-group-text">.00</span></div></div></div></div></div><div class="form-group row"> <label class="control-label col-md-3">Current Picture <img src="http://localhost:5000/static/images/'+ data.passport +'" height="50" id="studentPic" placeholder="Student Pic"></label><div class="col-md-8"> <input class="form-control" type="file" id="passport" name="passport"> <input class="form-control" type="hidden" id="status" name="status" value="'+data.status+'"></div></div><div class="tile-footer"><div class="row"><div class="col-md-8 col-md-offset-3"> <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update Info</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="page-student-info.html"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a></div></div></div></form>');
         });
       });
 
       // AJAX UPDATE STUDENT -page-student-update.html
       $('body').on('submit', '#studentUpdateForm', function(e){
         e.preventDefault();
+        
         var studentID = localStorage.getItem('currentStudent');
         var name = $('#name').val();
         var regNum = $('#regNum').val();
@@ -214,6 +215,7 @@
         var house = $('#house').val();
         var limit = $('#limit').val();
         var passport = $('#passport').val();
+        var studentStatus = $('#status').val();
 
         var myform = document.getElementById("studentUpdateForm");
         var fd = new FormData(myform );
@@ -225,12 +227,12 @@
           fd.delete("house");
         }
         
-        // for (var value of fd.values()) {
-        //   console.log(value); 
-        // }
+        for (var value of fd.values()) {
+          console.log(value); 
+        }
 
         $.ajax({
-            url: "http://127.0.0.1:5000/students?studentID="+studentID,
+            url: "http://127.0.0.1:5000/update-student?studentID="+studentID,
             data: fd,
             cache: false,
             processData: false,
@@ -247,7 +249,9 @@
                                 type: "info"
                   });
                   $('#studentUpdateForm')[0].reset();
-                  location.reload();
+                  //location.reload();
+                }else{
+                  alert();
                 }
             }
         });

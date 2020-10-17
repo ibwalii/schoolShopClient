@@ -198,7 +198,7 @@
         var pic = $('#form_studentPic').val();
 
         var myform = document.getElementById("studentAddForm");
-        var fd = new FormData(myform );
+        var fd = new FormData(myform);
 
         for (var value of fd.values()) {
           console.log(value); 
@@ -206,7 +206,7 @@
 
 
         $.ajax({
-            url: "http://127.0.0.1:5000/students",
+            url: "http://127.0.0.1:5000/add-student",
             data: fd,
             cache: false,
             processData: false,

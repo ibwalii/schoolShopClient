@@ -1,0 +1,57 @@
+Students routes
+
+pass argument "info" as GET Parameter to "/students"
+info':"to to get a particular student; pass 'studentID' as json integer, to delete a student pass 'studentID', 'action' of value 'delete', to update a student pass 'studentID', and options('name', 'class', 'house', 'passport', 'limit', 'balance', 'status') as json  to add a student pass the following options('name', 'class', 'house', 'passport', 'limit', 'balance', 'status') 'info' as json string of any value"
+
+ALL STUDENTS
+pass an empty angurment to "/students"
+
+STUDENT WITH ID/REGNUM
+pass an argument "studentID" or "regNum" as a GET parameter to "/students"
+
+UPDATE STUDENT
+pass an argument 
+
+
+ADD STUDENT
+pass a form data "regNum", "name", "class","house","limit","balance","passport" to "/students"
+
+DELETE STUDENT
+pass a 
+
+
+DEPOSIT MONEY
+pass a json data with "studentID", "amount" post method to "/deposits"
+
+CLASSES API
+
+GET CLASSES
+pass an empty argument get method to "/classes"
+
+ADD CLASS
+pass a json data with "name" post method to "/classes"
+
+DELETE CLASS
+pass
+
+
+HOUSES API
+
+GET HOUSES
+pass an empty argument get method to "/houses"
+
+ADD CLASS
+pass a json data with "name" post method to "/classes"
+
+DELETE CLASS
+pass  
+
+PURCHASES API
+
+ADD PURCHASE
+pass a json data with "studentID", "amount", "userID", "item" post method to "/transactions"
+
+
+
+
+ 

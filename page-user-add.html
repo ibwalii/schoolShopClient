@@ -92,50 +92,51 @@
           <div class="tile">
             <h3 class="tile-title">Add User</h3>
             <div class="tile-body">
-              <form class="form-horizontal">
+              <form class="form-horizontal" name="userAddForm" id="userAddForm" enctype="multipart/form-data" method="POST">
                 <div class="form-group row">
                   <label class="control-label col-md-3">Staff Name</label>
                   <div class="col-md-8">
-                    <input class="form-control" type="text" placeholder="Enter full name">
+                    <input class="form-control" name="name" id="name" type="text" placeholder="Enter full name">
                   </div>
                 </div>
                 <div class="form-group row">
                     <label class="control-label col-md-3">Login UserName</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" placeholder="Enter username">
+                      <input class="form-control" name="username" id="username" type="text" placeholder="Enter username">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="control-label col-md-3">Login Password</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="password" placeholder="Enter Password">
+                      <input class="form-control" name="password" id="password" type="password" placeholder="Enter Password">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="control-label col-md-3" for="user_role"> User Role</label>
                     <div class="col-md-8">
-                      <select class="form-control" id="user_role">
+                      <select class="form-control" id="user_role" name="user_role">
                         <option>Select</option>
-                        <option>Admin User</option>
-                        <option>Sales Staff</option>
+                        <option value="admin_login">Admin User</option>
+                        <option value="salesrep">Sales Staff</option>
                       </select>
                     </div>                  
                 </div>
                 <div class="form-group row">
                   <label class="control-label col-md-3">Identity Pic</label>
                   <div class="col-md-8">
-                    <input class="form-control" type="file">
+                    <input class="form-control" name="passport" id="passport"  type="file">
+                  </div>
+                </div>
+                <div class="tile-footer">
+                  <div class="row">
+                    <div class="col-md-8 col-md-offset-3">
+                      <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Add User</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                    </div>
                   </div>
                 </div>
               </form>
             </div>
-            <div class="tile-footer">
-              <div class="row">
-                <div class="col-md-8 col-md-offset-3">
-                  <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Add</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
         <div class="clearix"></div>
@@ -149,6 +150,45 @@
     <!-- The javascript plugin to display page loading on top-->
     <script src="static/js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
-    
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="static/js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    <script type="text/javascript" src="static/js/plugins/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="static/js/plugins/sweetalert.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      // AJAX ADD STUDENT -page-student-add.html
+      $('body').on('submit', '#userAddForm', function(e){
+        e.preventDefault();
+        var name = $('#name').val();
+        var username = $('#username').val();
+        var password = $('#password').val();
+        var user_role = $('#user_role').val();
+        var pic = $('#form_studentPic').val();
+        
+        data = JSON.stringify({name:name, username:username, password:password, user_role: user_role});
+        $.ajax({
+            url: "http://127.0.0.1:5000/users",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: data,
+            type: 'POST',
+            success: function (data) {
+                // do something with the result
+                if(data.status="success"){
+                  $.notify({
+                            title: "Action Complete : ",
+                            message: "Operation Successful!",
+                            icon: 'fa fa-check' 
+                            },{
+                                type: "info"
+                  });
+                  $('#userAddForm')[0].reset();
+                }
+            }
+        });
+      });
+    });
+  </script>  
   </body>
 </html>

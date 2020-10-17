@@ -12,7 +12,11 @@ $('#loginform').on('submit', function(){
     req.done(function(data){
         
         if (data.status == 'success'){
-            location.replace('dashboard.html');
+            if(data.user.role == 'salesrep'){
+                location.replace('page-shop-shopping.html')
+            }else{
+                location.replace('dashboard.html');
+            }
             localStorage.setItem('username', username);
             localStorage.setItem('userID', data.user.id);
             localStorage.setItem('salesToday', data.salesToday);
