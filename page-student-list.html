@@ -16,8 +16,8 @@
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="static/css/main.css">
     <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
@@ -242,7 +242,9 @@
       req.done(function(data){
           if (data.status == 'success'){
             data.classes.forEach(function(item){
-              $('#tableBody').append("<tr><td>"+item[0]+"</td><td>"+item[1]+"</td></tr>");
+              if(item[1]>0){
+                $('#tableBody').append("<tr><td>"+item[0]+"</td><td>"+item[1]+"</td></tr>");
+              }
             });
             data.students.forEach(function(item){
               var status = '<div class="toggle-flip"><label><input type="checkbox" class="alertSwitch"  studentID='+item.id+' checked><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span></label></div>';

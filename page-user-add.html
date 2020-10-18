@@ -16,8 +16,8 @@
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="static/css/main.css">
     <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
@@ -156,39 +156,39 @@
     <script type="text/javascript" src="static/js/plugins/bootstrap-notify.min.js"></script>
     <script type="text/javascript" src="static/js/plugins/sweetalert.min.js"></script>
     <script>
-    $(document).ready(function(){
-      // AJAX ADD STUDENT -page-student-add.html
-      $('body').on('submit', '#userAddForm', function(e){
-        e.preventDefault();
-        var name = $('#name').val();
-        var username = $('#username').val();
-        var password = $('#password').val();
-        var user_role = $('#user_role').val();
-        var pic = $('#form_studentPic').val();
-        
-        data = JSON.stringify({name:name, username:username, password:password, user_role: user_role});
-        $.ajax({
+    $(document).ready(function () {
+        // AJAX ADD STUDENT -page-student-add.html
+        $('body').on('submit', '#userAddForm', function (e) {
+          e.preventDefault();
+          var name = $('#name').val();
+          var username = $('#username').val();
+          var password = $('#password').val();
+          var user_role = $('#user_role').val();
+          var pic = $('#form_studentPic').val();
+
+          data = JSON.stringify({ name: name, username: username, password: password, user_role: user_role });
+          $.ajax({
             url: "http://127.0.0.1:5000/users",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: data,
             type: 'POST',
             success: function (data) {
-                // do something with the result
-                if(data.status="success"){
-                  $.notify({
-                            title: "Action Complete : ",
-                            message: "Operation Successful!",
-                            icon: 'fa fa-check' 
-                            },{
-                                type: "info"
-                  });
-                  $('#userAddForm')[0].reset();
-                }
+              // do something with the result
+              if (data.status = "success") {
+                $.notify({
+                  title: "Action Complete : ",
+                  message: "Operation Successful!",
+                  icon: 'fa fa-check'
+                }, {
+                  type: "info"
+                });
+                $('#userAddForm')[0].reset();
+              }
             }
+          });
         });
       });
-    });
   </script>  
   </body>
 </html>

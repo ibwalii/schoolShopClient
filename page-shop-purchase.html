@@ -1,200 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="description" content="GHA School Shop">
 
-    <!-- Open Graph Meta-->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Great Heights Academy">
-    <meta property="og:title" content="Great Heights Academy School Shop">
+<head>
+  <meta name="description" content="GHA School Shop">
 
-    <meta property="og:description" content="GHA School Shop">
-    <title>GHA School Shop</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="static/css/main.css">
-    <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css"> -->
-  </head>
-  <body class="app sidebar-mini rtl">
-    <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="index.html">GHA School Shop</a>
-      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
-      <!-- Navbar Right Menu-->
-      <ul class="app-nav">
-        <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
-          <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="index.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </header>
-    <!-- Sidebar menu-->
-    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-    <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="static/images/user.png" alt="User Image">
-        <div>
-          <p class="app-sidebar__user-name">Admin Admin</p>
-          <p class="app-sidebar__user-designation">Shop Admin</p>
-        </div>
-      </div>
-      <ul class="app-menu">
-        <li><a class="app-menu__item" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Student Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="page-student-list.html"><i class="icon fa fa-circle-o"></i> Student List</a></li>
-            <li><a class="treeview-item" href="page-student-add.html"><i class="icon fa fa-circle-o"></i> Add New Student</a></li>
-            
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Staff Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="page-user-list.html"><i class="icon fa fa-circle-o"></i> Staff List</a></li>
-            <li><a class="treeview-item" href="page-user-add.html" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Add New Staff</a></li>
-            
-          </ul>
-        </li>
-        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">My Shop</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Stock Management</a></li>
-            <li><a class="treeview-item active" href="page-shop-purchase.html"><i class="icon fa fa-circle-o"></i> My Purchases</a></li>
-           
-          </ul>
-        </li>
-        
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Reports</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="page-report-transaction.html"><i class="icon fa fa-circle-o"></i> Shopping Report</a></li>
-            <li><a class="treeview-item" href="page-report-comprehensive.html"><i class="icon fa fa-circle-o"></i> Comprehensive Report</a></li>
-            
-          </ul>
-        </li>
-      </ul>
-    </aside>
-    <main class="app-content">
-      <div class="app-title">
-        <div>
-          <h1><i class="fa fa-file-text-o"></i> Transactions</h1>
-          <p>Transaction Records</p>
-        </div>
-        <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">Report</li>
-          <li class="breadcrumb-item"><a href="#">Transactions</a></li>
+  <!-- Open Graph Meta-->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Great Heights Academy">
+  <meta property="og:title" content="Great Heights Academy School Shop">
+
+  <meta property="og:description" content="GHA School Shop">
+  <title>GHA School Shop</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Main CSS-->
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+  <!-- Font-icon css-->
+  <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+</head>
+
+<body class="app sidebar-mini rtl">
+  <!-- Navbar-->
+  <header class="app-header"><a class="app-header__logo" href="index.html">GHA School Shop</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+      aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+      <!-- User Menu-->
+      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
+            class="fa fa-user fa-lg"></i></a>
+        <ul class="dropdown-menu settings-menu dropdown-menu-right">
+          <li><a class="dropdown-item" href="index.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
         </ul>
+      </li>
+    </ul>
+  </header>
+  <!-- Sidebar menu-->
+  <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+  <aside class="app-sidebar">
+    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="static/images/user.png" alt="User Image">
+      <div>
+        <p class="app-sidebar__user-name">Admin Admin</p>
+        <p class="app-sidebar__user-designation">Shop Admin</p>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="tile">
-              <h1>Add new purchase record</h1>
-            <form class="row">
-                    
-                  <div class="form-group col-2">
-                    <label class="control-label">By</label>
-                    <input class="form-control" id="stfname" type="text" placeholder="Staff Name">
-                  </div>
-                  <div class="form-group col-3">
-                    <label for="exampleInputAmount">Amount (in Naira)</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend"><span class="input-group-text">₦</span></div>
-                      <input class="form-control" id="exampleInputAmount" type="text" placeholder="Amount">
-                      <div class="input-group-append"><span class="input-group-text">.00</span></div>
-                    </div>
-                  </div>
-                  <div class="form-group col-3">
-                    <label class="control-label">Items</label>
-                    <textarea class="form-control" rows="1" placeholder="Enter your address"></textarea>
-                  </div>
-                  <div class="form-group col-2">
-                    <label class="control-label">Date</label>
-                    <input class="form-control filterdate" id="date" type="text" placeholder="Select Date">
-                  </div>
-                <div class="form-group col-2 align-self-end">
-                  <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save Record</button>
-                </div>
-              </form>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="tile">
-            <section class="invoice">
-              <div class="row mb-4">
-                <div class="col-6">
-                  <h2 class="page-header"><i class="fa fa-globe"></i> Store Purchases Record</h2>
-                </div>
-                <div class="col-6">
-                  <h5 class="text-right">Date: 01/01/2019</h5>
-                </div>
-              </div>
-              <hr>
-              <div class="row">                 
-                <div class="col-12 table-responsive">
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th>Transaction No.</th>
-                        <th>Staff Name</th>
-                        <th>Amount</th>
-                        <th>Items</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Ibrahim Bakari</td>
-                        <td>₦ 10, 000</td>
-                        <td>10 Packs of cocos</td>
-                        <td>12/12/2019</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Ibrahim Bakari</td>
-                        <td>₦ 20, 000</td>
-                        <td>10 Packs of Biscuits</td>
-                        <td>22/12/2019</td>
-                      </tr>
-                      <tr>
-                        <th colspan="2" class="text-right">Total</th>
-                        <td colspan="2">₦ 3, 000</td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="row d-print-none mt-2">
-                <div class="col-12 text-right"><a class="btn btn-primary" href="javascript:window.print();" target="_blank"><i class="fa fa-print"></i> Print</a></div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
-    </main>
-    <!-- Essential javascripts for application to work-->
-    <script src="static/js/jquery-3.2.1.min.js"></script>
-    <script src="static/js/popper.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/main.js"></script>
-    <!-- The javascript plugin to display page loading on top-->
-    <script src="static/js/plugins/pace.min.js"></script>
-    <!-- Page specific javascripts-->
-    <script type="text/javascript" src="static/js/plugins/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript">
-        
-        $('.filterdate').datepicker({
-            format: "dd/mm/yyyy",
-            autoclose: true,
-            todayHighlight: true
-        });
+    </div>
+    <ul class="app-menu">
+      <li><a class="app-menu__item" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span
+            class="app-menu__label">Dashboard</span></a></li>
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+            class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Student Management</span><i
+            class="treeview-indicator fa fa-angle-right"></i></a>
+        <ul class="treeview-menu">
+          <li><a class="treeview-item" href="page-student-list.html"><i class="icon fa fa-circle-o"></i> Student
+              List</a></li>
+          <li><a class="treeview-item" href="page-student-add.html"><i class="icon fa fa-circle-o"></i> Add New
+              Student</a></li>
 
-      </script>
-    
-  </body>
+        </ul>
+      </li>
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+            class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Staff Management</span><i
+            class="treeview-indicator fa fa-angle-right"></i></a>
+        <ul class="treeview-menu">
+          <li><a class="treeview-item" href="page-user-list.html"><i class="icon fa fa-circle-o"></i> Staff List</a>
+          </li>
+          <li><a class="treeview-item" href="page-user-add.html" target="_blank" rel="noopener"><i
+                class="icon fa fa-circle-o"></i> Add New Staff</a></li>
+
+        </ul>
+      </li>
+      <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+            class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">My Shop</span><i
+            class="treeview-indicator fa fa-angle-right"></i></a>
+        <ul class="treeview-menu">
+          <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Stock Management</a></li>
+          <li><a class="treeview-item active" href="page-shop-purchase.html"><i class="icon fa fa-circle-o"></i> My
+              Purchases</a></li>
+
+        </ul>
+      </li>
+
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+            class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Reports</span><i
+            class="treeview-indicator fa fa-angle-right"></i></a>
+        <ul class="treeview-menu">
+          <li><a class="treeview-item" href="page-report-transaction.html"><i class="icon fa fa-circle-o"></i> Shopping
+              Report</a></li>
+          <li><a class="treeview-item" href="page-report-comprehensive.html"><i class="icon fa fa-circle-o"></i>
+              Comprehensive Report</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </aside>
+  <main class="app-content">
+    <div class="app-title">
+      <div>
+        <h1><i class="fa fa-file-text-o"></i> Transactions</h1>
+        <p>Transaction Records</p>
+      </div>
+      <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item">Report</li>
+        <li class="breadcrumb-item"><a href="#">Transactions</a></li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tile">
+          <h1>Add new purchase record</h1>
+          <form class="row" name="purchaseAddForm" id="purchaseAddForm">
+            <div class="form-group col-4">
+              <label for="exampleInputAmount">Amount (in Naira)</label>
+              <div class="input-group">
+                <div class="input-group-prepend"><span class="input-group-text">₦</span></div>
+                <input class="form-control" id="amount" name="amount" type="text" placeholder="Amount">
+                <div class="input-group-append"><span class="input-group-text">.00</span></div>
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label class="control-label">Items</label>
+              <textarea class="form-control" id="items" name="items" rows="1"
+                placeholder="Enter Items description"></textarea>
+            </div>
+
+            <div class="form-group col-2 align-self-end">
+              <button class="btn btn-primary" type="button" name="saveBtn" id="saveBtn"><i
+                  class="fa fa-fw fa-lg fa-check-circle"></i>Save
+                Record</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tile">
+          <section class="invoice">
+            <div class="row mb-4">
+              <div class="col-6">
+                <h2 class="page-header"><i class="fa fa-globe"></i> Store Purchases Record</h2>
+              </div>
+              <div class="col-6">
+                <h5 class="text-right">Date: 01/01/2019</h5>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-12 table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Transaction No.</th>
+                      <th>Staff Name</th>
+                      <th>Amount</th>
+                      <th>Items</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id="transactions">
+                    <!-- <tr>
+                      <td>1</td>
+                      <td>Ibrahim Bakari</td>
+                      <td>₦ 10, 000</td>
+                      <td>10 Packs of cocos</td>
+                      <td>12/12/2019</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Ibrahim Bakari</td>
+                      <td>₦ 20, 000</td>
+                      <td>10 Packs of Biscuits</td>
+                      <td>22/12/2019</td>
+                    </tr>
+                    <tr>
+                      <th colspan="2" class="text-right">Total</th>
+                      <td colspan="2">₦ 3, 000</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row d-print-none mt-2">
+              <div class="col-12 text-right"><a class="btn btn-primary" href="javascript:window.print();"
+                  target="_blank"><i class="fa fa-print"></i> Print</a></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- Essential javascripts for application to work-->
+  <script src="static/js/jquery-3.2.1.min.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/main.js"></script>
+  <!-- The javascript plugin to display page loading on top-->
+  <script src="static/js/plugins/pace.min.js"></script>
+  <!-- Page specific javascripts-->
+  <script type="text/javascript" src="static/js/plugins/bootstrap-notify.min.js"></script>
+  <script type="text/javascript" src="static/js/plugins/sweetalert.min.js"></script>
+  <script type="text/javascript" src="static/js/plugins/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript">
+
+    $('.filterdate').datepicker({
+      format: "dd/mm/yyyy",
+      autoclose: true,
+      todayHighlight: true
+    });
+
+    // GET ALL PURCHASES
+    $(document).ready(function () {
+
+      req = $.ajax({
+        url: 'http://localhost:5000/purchases',
+        type: 'get',
+      });
+      req.done(function (data) {
+        console.log(data);
+        data = data.purchases;
+        totalAmount = 0;
+        count = 1;
+        data.forEach(function (item) {
+          totalAmount = totalAmount + item['amount'];
+          $('#transactions').append('<tr><td>' + count + '</td><td>' + item.userName + '</td><td class="text-right">₦ ' + item.amount + '.00</td><td>' + item.item + '</td><td>' + item.date + '</td></tr>');
+          count++;
+        });
+        $('#transactions').append('<tr><th class="text-right" colspan="2">Total</th><td colspan="1" class="text-right">₦ ' + totalAmount + '.00</td></tr>');
+      });
+
+      // AJAX ADD PURCHASES 
+      $('body').on('click', '#saveBtn', function (e) {
+        e.preventDefault();
+
+        var userID = localStorage.getItem('userID');
+        var amount = $('#amount').val();
+        var item = $('#items').val();
+
+        data = JSON.stringify({ userID: userID, amount: amount, item: item });
+        $.ajax({
+          url: "http://127.0.0.1:5000/purchases",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: data,
+          type: 'POST',
+          success: function (data) {
+            // do something with the result
+            if (data.status = "success") {
+              $.notify({
+                title: "Action Complete : ",
+                message: "Operation Successful!",
+                icon: 'fa fa-check'
+              }, {
+                type: "info"
+              });
+              $('#purchaseAddForm')[0].reset();
+            }
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+
 </html>
