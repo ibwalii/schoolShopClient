@@ -213,7 +213,7 @@
         enddate = today;
         //alert("end "+enddate);
       }
-      data = JSON.stringify({ startDate: weekday, endDate: tomorotoday });
+      data = JSON.stringify({ startDate: startdate, endDate: enddate });
       req = $.ajax({
         url: 'http://localhost:5000/reports',
         type: 'post',
