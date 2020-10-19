@@ -80,6 +80,7 @@
           <h1><i class="fa fa-th-list"></i> Student List</h1>
           <p>List of Students</p>
         </div>
+        <p><a href="javascript:history.back()">Previous Page <i class="fa fa-arrow-left fa-lg"></i></a></p>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
           <li class="breadcrumb-item">Report</li>
@@ -99,35 +100,7 @@
                   </div>
                 </div>
                 <div class="row invoice-info" id="reportSummary">
-                  <!-- <div class="col-12">
-                      <div class="table-responsive">
-                          <table class="table">
-                            <thead>
-                              <tr>
-                                <th>Total Records</th>
-                                <th>200</th>
-                                <th>Total Credit</th>
-                                <th>₦ 150, 000</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th>&nbsp;</th>
-                                <td>&nbsp;</td>
-                                <th>Total Debit</th>
-                                <td>₦ 130, 000</td>
-                              </tr>
-                              <tr>
-                                <th>&nbsp;</th>
-                                <th>&nbsp;</th>
-                                <th>Account Balance</th>
-                                <th>₦ 20, 000</th>
-                              </tr>
-                              
-                            </tbody>
-                          </table>
-                        </div>
-                  </div> -->
+                  
                 </div>
                 <hr>
                 
@@ -187,7 +160,7 @@
             url: 'http://localhost:5000/reports',
             type:'get'
         });
-        req.done(function(data){          
+        req.done(function(data){        
             if (data){
               count = 1;
               data.studentReport.forEach(function(item){
