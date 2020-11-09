@@ -106,7 +106,7 @@
                   <label class="control-label"><strong>Amount </strong> </label>
                   <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text">₦</span></div>
-                    <input class="form-control" id="amount" type="text" placeholder="Amount" required>
+                    <input class="form-control" id="amount" type="text" placeholder="Amount" required autocomplete="off">
                     <div class="input-group-append"><span class="input-group-text">.00</span></div>
                   </div>
                 </div>
@@ -135,6 +135,7 @@
   <script type="text/javascript" src="static/js/plugins/moment.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
+        
       function searchStudent() {
 
         req = $.ajax({
@@ -163,8 +164,15 @@
               req.done(function (data) {
                 item = data.student;
                 item.transactions.forEach(function (item) {
+                  var timestampStartweek = ((new Date(startWeek)).getTime());
+                  var timestampEndtweek = ((new Date(endWeek)).getTime());
+
+                  timestampStartweek = timestampStartweek/1000;
+                  timestampEndtweek = timestampEndtweek/1000;
                   if (item['item'] == null || item['item'] == '') {
-                    weeklySpending = weeklySpending + item['amount'];
+                    if( item.timestamp > timestampStartweek && item.timestamp < timestampEndtweek){
+                      weeklySpending = weeklySpending + item['amount'];
+                    }
                   }
                 });
 
@@ -176,6 +184,7 @@
                 $('#studentInfo').html('<div class="col-8"><div class="table-responsive"><table class="table"><thead><tr><th>Name</th><th>' + item.name + '</th><td>Class</td><td>' + item.class + '</td></tr></thead><tbody><tr><th>House</th><td>' + item.house + '</td><th>Weekly Limit</th><td>₦ ' + item.weeklyLimit + '.00</td></tr><tr><th>Account Balance</th><th>₦ ' + item.balance + '.00</th><th>Weekly Balance</th><th> ₦ ' + (item.weeklyLimit - weeklySpending) + '.00</th></tr></tbody></table></div></div><div class="col-4"> <img src="http://localhost:5000/static/images/' + item.passport + '" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student"></div>');
 
                 $('html, body').animate({ scrollTop: $(document).height() }, 1200);
+                $("#amount").select();
                 $("#amount").focus();
 
               });
@@ -209,6 +218,12 @@
           searchStudent();
         }
 
+      });
+
+      $('#stdid').focus(function(){
+        $('#studentInfo').html("");
+        $(this).select();
+        $("#amount").val(0);
       });
 
       // NEW SEARCH STUDENT FORM

@@ -101,7 +101,7 @@
                 <h2 class="page-header"><i class="fa fa-globe"></i> My Transaction Report</h2>
               </div>
               <div class="col-6">
-                <h5 class="text-right">Date: 01/01/2019</h5>
+                <h5 class="text-right" id="report_date">Date: 01/01/2019</h5>
               </div>
             </div>
             <hr>
@@ -144,7 +144,7 @@
   <script type="text/javascript">
 
     $('.filterdate').datepicker({
-      format: "dd/mm/yyyy",
+      format: "yyyy/mm/dd",
       autoclose: true,
       todayHighlight: true
     });
@@ -160,11 +160,18 @@
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
       var yyyy = today.getFullYear();
 
+      if (yw.match(/^-\d+$/)) {
+            yw = 1; // AVOID NEGATIVE DATE
+        } else {
+
+        }
+
       today = yyyy + '/' + mm + '/' + dd;
       tomorotoday = yyyy + '/' + mm + '/' + td;
       yesterday = yyyy + '/' + mm + '/' + yd;
       weekday = yyyy + '/' + mm + '/' + yw;
 
+      $('#report_date').html("Date : "+today);
     $(document).ready(function () {
 
       var studentID = localStorage.getItem('currentStudent');

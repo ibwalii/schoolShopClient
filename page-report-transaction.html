@@ -137,7 +137,7 @@
                 <h2 class="page-header"><i class="fa fa-globe"></i> Transaction Report</h2>
               </div>
               <div class="col-6">
-                <h5 class="text-right">Date: 01/01/2019</h5>
+                <h5 class="text-right"  id="report_date">Date: 01/01/2019</h5>
               </div>
             </div>
             <hr>
@@ -225,9 +225,8 @@
       yesterday = yyyy + '/' + mm + '/' + yd;
       weekday = yyyy + '/' + mm + '/' + yw;
 
-
+      $('#report_date').html("Date : "+today);
       data = JSON.stringify({ startDate: weekday, endDate: tomorotoday });
-
       req = $.ajax({
         url: 'http://localhost:5000/reports',
         type: 'post',
