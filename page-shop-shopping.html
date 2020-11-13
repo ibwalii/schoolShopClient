@@ -92,7 +92,7 @@
                 <h2 class="page-header"><i class="fa fa-globe"></i> Student Information</h2>
               </div>
               <div class="col-6">
-                <h5 class="text-right">Date: 01/01/2019</h5>
+                <h5 class="text-right" id="report_date">Date: 01/01/2019</h5>
               </div>
             </div>
             <div class="row invoice-info" id="studentInfo">
@@ -135,7 +135,13 @@
   <script type="text/javascript" src="static/js/plugins/moment.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-        
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+
+      today = yyyy + '/' + mm + '/' + dd; 
+      $('#report_date').html("Date : "+today);
       function searchStudent() {
 
         req = $.ajax({
@@ -230,7 +236,7 @@
       $('body').on('submit', '#searchStudentForm', function (e) {
         e.preventDefault();
         stdid = $('#stdid').val();
-        weeklySpending = 0;
+        weeklySpending = int(0);
         weeklyBalance = 0;
         weeklyLimit = 0;
         studentBalance = 0;

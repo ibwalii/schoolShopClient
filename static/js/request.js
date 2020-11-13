@@ -3,7 +3,7 @@ $('#loginform').on('submit', function(){
     username = $('#username').val();
     password = $('#password').val();
     req = $.ajax({
-        url: 'http://localhost:5000/login',
+        url: 'http://127.0.0.1:5000/login',
         type:'post',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
