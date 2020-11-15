@@ -173,8 +173,10 @@
                   var timestampStartweek = ((new Date(startWeek)).getTime());
                   var timestampEndtweek = ((new Date(endWeek)).getTime());
 
-                  timestampStartweek = timestampStartweek/1000;
-                  timestampEndtweek = timestampEndtweek/1000;
+                  // timestampStartweek = timestampStartweek/1000;
+                  // timestampEndtweek = timestampEndtweek/1000;
+                  timestampStartweek = moment().startOf('week').unix();
+                  timestampEndtweek = moment().endOf('week').unix();
                   if (item['item'] == null || item['item'] == '') {
                     if( item.timestamp > timestampStartweek && item.timestamp < timestampEndtweek){
                       weeklySpending = weeklySpending + item['amount'];
@@ -265,6 +267,12 @@
           return;
         }
 
+        var me = $(this);
+        if ( me.data('requestRunning') ) {
+            return;
+        }
+        me.data('requestRunning', true);
+
         req = $.ajax({
           url: 'http://localhost:5000/transactions',
           type: 'post',
@@ -273,6 +281,7 @@
           data: data
         });
         req.done(function (data) {
+            me.data('requestRunning', false);
           if (data.status = "success") {
             $.notify({
               title: "Action Complete : ",
