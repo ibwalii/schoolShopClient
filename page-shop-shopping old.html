@@ -145,7 +145,7 @@
       function searchStudent() {
 
         req = $.ajax({
-          url: 'http://localhost:5000/students?random_id=' + stdid,
+          url: 'http://localhost:5000/students?regNum=' + stdid,
           type: 'get',
         });
         req.done(function (item) {
@@ -158,7 +158,7 @@
               localStorage.setItem('student', item.id);
 
               // GET WEEKLY SPENDING
-              data = JSON.stringify({ random_id: stdid, startDate: startWeek, endDate: endWeek });
+              data = JSON.stringify({ regNum: stdid, startDate: startWeek, endDate: endWeek });
               req = $.ajax({
                 url: 'http://localhost:5000/reports',
                 type: 'post',
@@ -212,11 +212,11 @@
       endWeek = moment().endOf('isoweek').format('YYYY/MM/DD');
 
       $('#stdid').on('keyup', function () {
-        var random_idL = $(this).val()
-        // if (random_idL.length == 2) {
-        //   $(this).val(random_idL + "/")
-        // }
-        if (random_idL.length > 7) {
+        var regNumL = $(this).val()
+        if (regNumL.length == 2) {
+          $(this).val(regNumL + "/")
+        }
+        if (regNumL.length >= 6) {
           stdid = $('#stdid').val();
           weeklySpending = 0;
           weeklyBalance = 0;
@@ -254,10 +254,6 @@
         var studentID = localStorage.getItem('student');
         var amount = parseInt($('#amount').val());
         data = JSON.stringify({ studentID: studentID, amount: amount, userID: userID });
-        if (amount < 1) {
-          alert("Please Enter Amount");
-          return;
-        }
         if (amount > weeklyLimit) {
           alert("Student Exceeded weekly limit");
           return;
