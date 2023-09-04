@@ -123,6 +123,12 @@
                 
               </div>
               <hr>
+                <svg class="barcode"
+                    jsbarcode-format="upc"
+                    jsbarcode-value="123456789012"
+                    jsbarcode-textmargin="0"
+                    jsbarcode-fontoptions="bold">
+                </svg>
               <!-- <div class="row">                 
                 <div class="col-12 table-responsive">
                   <table class="table table-striped">
@@ -158,6 +164,7 @@
     <script src="static/js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
     <script type="text/javascript" src="static/js/plugins/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="static/js/plugins/JsBarcode.all.min.js"></script>
     <script type="text/javascript">
         
         $('.filterdate').datepicker({
@@ -168,6 +175,8 @@
         
       $(document).ready(function(){
 
+        JsBarcode(".barcode").init();
+        
         var studentID = localStorage.getItem('currentStudent');
         var currentStudentRegNum = localStorage.getItem('currentStudentRegNum');
 

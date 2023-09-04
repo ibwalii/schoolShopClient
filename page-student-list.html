@@ -253,7 +253,7 @@
                 status = '<div class="toggle-flip"><label><input type="checkbox" class="alertSwitch" studentID='+item.id+'><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span></label></div>';
               }
               $('#allStudentTable').DataTable().row.add(
-                [status, item.regNum, item.name, item.house, item.class, item.weeklyLimit, '<div class="btn-group" role="group" aria-label="Button group with nested dropdown"><button class="btn btn-info" type="button">Info</button><div class="btn-group" role="group"><button class="btn btn-info dropdown-toggle moreInfoBtn" data-regNum="'+item.regNum+'" data-id="'+item.id+'" id="btnGroupDrop3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-student-deposit.html">New Deposit</a><a class="dropdown-item" href="page-student-info.html">More Info</a></div></div></div><button class="btn btn-outline-danger delstd" data-std_id="'+item.id+'" data-std_name="'+item.name+'" type="button"><i class="icon fa fa-trash-o"></i> Delete</button>']
+                [status, item.regNum, item.name, item.house, item.class, item.weeklyLimit, '<div class="btn-group" role="group" aria-label="Button group with nested dropdown"><button class="btn btn-info" type="button">Info</button><div class="btn-group" role="group"><button class="btn btn-info dropdown-toggle moreInfoBtn" data-regNum="'+item.regNum+'" data-id="'+item.id+'" data-random="'+item.random_id+'" id="btnGroupDrop3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-student-deposit.html">New Deposit</a><a class="dropdown-item" href="page-student-info.html">More Info</a></div></div></div><button class="btn btn-outline-danger delstd" data-std_id="'+item.id+'" data-std_name="'+item.name+'" type="button"><i class="icon fa fa-trash-o"></i> Delete</button>']
               ).draw();
             })
           }}
@@ -274,6 +274,7 @@
       
       $(document).on('click', '.moreInfoBtn', function(){
         localStorage.setItem('currentStudent',$(this).data('id'));
+        localStorage.setItem('random_id',$(this).data('random'));
       });
     </script>
   </body>
