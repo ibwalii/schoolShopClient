@@ -123,12 +123,14 @@
                 
               </div>
               <hr>
+              <div id="barcodeHolder">
                 <svg class="barcode"
                     jsbarcode-format="upc"
-                    jsbarcode-value="123456789012"
+                    jsbarcode-value="19877266721"
                     jsbarcode-textmargin="0"
                     jsbarcode-fontoptions="bold">
                 </svg>
+            </div>
               <!-- <div class="row">                 
                 <div class="col-12 table-responsive">
                   <table class="table table-striped">
@@ -175,10 +177,22 @@
         
       $(document).ready(function(){
 
+        // Js Barcode Initialization
         JsBarcode(".barcode").init();
-        
+
         var studentID = localStorage.getItem('currentStudent');
         var currentStudentRegNum = localStorage.getItem('currentStudentRegNum');
+        var random_id = localStorage.getItem('random_id');
+
+        // Generate the barcode dynamically (replace '123456789012' with your actual barcode value)
+        $('.barcode').each(function () {
+        JsBarcode(this, random_id, {
+            format: 'CODE128', // Adjust the barcode format as needed
+            displayValue: true, // You can set this to true if you want to display the encoded value below the barcode
+            height:200,
+            width:4,
+        }); });
+        
 
         // GETTING DATE VALUES
         var today = new Date();
