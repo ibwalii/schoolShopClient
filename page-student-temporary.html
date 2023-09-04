@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="GHA School Shop">
+
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Great Heights Academy">
+    <meta property="og:title" content="Great Heights Academy School Shop">
+
+    <meta property="og:description" content="GHA School Shop">
+    <title>GHA School Shop</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!-- Font-icon css-->
+    <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+  </head>
+  <body class="app sidebar-mini rtl">
+    <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="index.html">GHA School Shop</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <!-- Navbar Right Menu-->
+      <ul class="app-nav">
+        <!-- User Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li><a class="dropdown-item" href="index.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="static/images/user.png" alt="User Image">
+        <div>
+          <p class="app-sidebar__user-name">Admin Admin</p>
+          <p class="app-sidebar__user-designation">Shop Admin</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li><a class="app-menu__item" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Student Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="page-student-list.html"><i class="icon fa fa-circle-o"></i> Student List</a></li>
+            <li><a class="treeview-item" href="page-student-add.html"><i class="icon fa fa-circle-o"></i> Add New Student</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Staff Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item active" href="page-user-list.html"><i class="icon fa fa-circle-o"></i> Staff List</a></li>
+            <li><a class="treeview-item" href="page-user-add.html"><i class="icon fa fa-circle-o"></i> Add New Staff</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">My Shop</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Stock Management</a></li>
+            <li><a class="treeview-item" href="page-shop-purchase.html"><i class="icon fa fa-circle-o"></i> My Purchases</a></li>
+          </ul>
+        </li>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Reports</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="page-report-transaction.html"><i class="icon fa fa-circle-o"></i> Shopping Report</a></li>
+            <li><a class="treeview-item" href="page-report-comprehensive.html"><i class="icon fa fa-circle-o"></i> Comprehensive Report</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-file-text-o"></i> Comprehensive Report</h1>
+          <p>Individual Student Comprehensive Report</p>
+        </div>
+        <p><a href="javascript:history.back()">Previous Page <i class="fa fa-arrow-left fa-lg"></i></a></p>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">Student</li>
+          <li class="breadcrumb-item"><a href="#">Report</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <form class="row">
+
+                <div class="form-group col-4">
+                    <label class="control-label">Start Date</label>
+                    <input class="form-control filterdate" id="startdate" type="text" placeholder="Select Date">
+                  </div>
+                  <div class="form-group col-4">
+                    <label class="control-label">End Date</label>
+                    <input class="form-control filterdate" id="enddate" type="text" placeholder="Select Date">
+                  </div>
+                <div class="form-group col-4 align-self-end">
+                  <button class="btn btn-primary" type="button" id="filterBtn"><i class="fa fa-fw fa-lg fa-check-circle"></i>Filter Transactions</button>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <section class="invoice">
+              <div class="row mb-4">
+                <div class="col-6">
+                  <h2 class="page-header"><i class="fa fa-globe"></i> Account Statement Report</h2>
+                </div>
+                <div class="col-6">
+                  <h5 class="text-right" id="dateHolder">Date: 01/01/2019</h5>
+                </div>
+              </div>
+              <div class="row invoice-info" id="studentInfo">
+                
+              </div>
+              <hr>
+              <div class="row">                 
+                <div class="col-12 table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Transaction No.</th>
+                        <th>Credit Amount</th>
+                        <th>Debit Amount</th>
+                        <th>Balance</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody id="studentStatement">
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row d-print-none mt-2">
+                <div class="col-12 text-right"><a class="btn btn-primary" href="javascript:window.print();" target="_blank"><i class="fa fa-print"></i> Print</a></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Essential javascripts for application to work-->
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="static/js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    <script type="text/javascript" src="static/js/plugins/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+        
+        $('.filterdate').datepicker({
+            format: "yyyy/mm/dd",
+            autoclose: true,
+            todayHighlight: true
+        });
+        
+      $(document).ready(function(){
+
+        var studentID = localStorage.getItem('currentStudent');
+        var currentStudentRegNum = localStorage.getItem('currentStudentRegNum');
+
+        // GETTING DATE VALUES
+        var today = new Date();
+        var dd = String(today.getDate() + 1).padStart(2, '0');
+        var yd = String(today.getDate() - 1).padStart(2, '0'); // day -1 for yesterday
+        var yw = String(today.getDate() - 6).padStart(2, '0'); // day -7 for Week
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        
+        // SETTING DATES
+        today =  yyyy + '/' + mm + '/'  + dd;
+        yesterday =  yyyy + '/' + mm + '/'  + yd;
+        weekday =  yyyy + '/' + mm + '/'  + yw;
+
+          $('#dateHolder').html(today);
+          startdate = $('#startdate').val();
+          enddate = $('#enddate').val();
+
+          if(!enddate && !startdate){
+            $('#startdate').val(yesterday)
+            $('#enddate').val(today);
+            startdate = yesterday;
+            enddate = today
+          }
+          else if(!enddate){
+            enddate = today;
+          }
+
+
+
+        // GETTING STUDENT DETAILS
+          req = $.ajax({
+            url: 'http://localhost:5000/students',
+            type:'get',
+            data: {studentID: studentID}
+
+          });
+          req.done(function(data){
+
+            $('#studentInfo').html('<div class="col-8"><div class="table-responsive" ><table class="table"><thead><tr><th>Name</th><th>'+data.name+'</th><td>Class</td><td>'+data.class+'</td></tr></thead><tbody><tr><th>House</th><td>'+data.house+'</td><th>Weekly Limit</th><td>₦ '+ data.weeklyLimit +'.00</td></tr><tr><th>Account Balance</th><th>₦ '+ data.balance +'.00</th><th>Total Transactions</th><th> 100</th></tr></tbody></table></div></div><div class="col-4"> <img src="http://localhost:5000/static/images/'+ data.passport +'" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student"></div>');
+          });
+
+        
+        data = JSON.stringify({regNum: currentStudentRegNum, startDate:weekday, endDate: today, statement:"1"});
+          req = $.ajax({
+            url: 'http://localhost:5000/reports',
+            type:'post',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: data
+
+          });
+          req.done(function(data){
+              console.log(data);
+              var count = 1;
+              var keys = Object.keys(data);
+              for(var i=0; i<keys.length; i++){
+                  var key = keys[i];
+                  item = data[key];
+                  item.forEach(function(result){
+                      // console.log(result.balance);
+                  $('#studentStatement').append("<tr><td>"+count+"</td><td>₦ "+result.credit+".00</td><td>₦ "+result.debit+".00 </td><td>₦ "+result.balance+".00</td><td>"+key+"</td></tr>");
+                  });
+                  count++;
+              }
+          });
+
+          $('body').on('click', '#filterBtn', function () {
+        startdate = $('#startdate').val();
+        enddate = $('#enddate').val();
+        
+        if (!enddate && !startdate) {
+          $('#startdate').val(yesterday)
+          $('#enddate').val(today);
+          startdate = yesterday;
+          enddate = today
+        }
+        else if (!enddate) {
+          enddate = today;
+          //alert("end "+enddate);
+        }
+          data = JSON.stringify({regNum: currentStudentRegNum, startDate:startdate, endDate: enddate, statement:"1"});
+          req = $.ajax({
+            url: 'http://localhost:5000/reports',
+            type:'post',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: data
+
+          });
+          req.done(function(data){
+              console.log(data);
+              $('#studentStatement').html('');
+              var count = 1;
+              var keys = Object.keys(data);
+              for(var i=0; i<keys.length; i++){
+                  var key = keys[i];
+                  item = data[key];
+                  item.forEach(function(result){
+                  
+                  $('#studentStatement').append("<tr><td>"+count+"</td><td>₦ "+result.credit+".00</td><td>₦ "+result.debit+".00 </td><td>₦ "+result.balance+".00</td><td>"+key+"</td></tr>");
+                  });
+                  count++;
+              }
+          });
+      });
+      });
+
+      
+      </script>
+    
+  </body>
+</html>
