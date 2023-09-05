@@ -77,7 +77,7 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i> Student List</h1>
+          <h1><i class="fa fa-th-list"></i> Student Promotion</h1>
           <p>List of Students</p>
         </div>
         <p><a href="javascript:history.back()">Previous Page <i class="fa fa-arrow-left fa-lg"></i></a></p>
@@ -88,7 +88,7 @@
         </ul>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-7">
           <div class="tile">
             <div class="tile-body table-responsive">
                 <table class="table table-bordered table-hover table-sm">
@@ -98,8 +98,18 @@
             </div>
           </div>
         </div>
+        <div class="col-md-5">
+            <div class="tile">
+              <div class="tile-body">
+                <h4>Promotion will move students to the next class according to their current class</h4>
+                <h4>It will also remove all graduating class student from the platform</h4>
+                <h5 class="text-danger">Ensure you know what you're doing! This action is not reversable</h5>
+                <button class="btn btn-info btn-lg probtn" data-std_id="'+item.id+'" data-std_name="'+item.name+'" type="button"><i class="icon fa fa-user"></i> Update</button>
+              </div>
+            </div>
+          </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
@@ -120,7 +130,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="static/js/jquery-3.2.1.min.js"></script>
@@ -159,36 +169,34 @@
         
       });
 
-      $('.alertSwitch').click(function(){
-      	swal({
-      		title: "Are you sure?",
-      		text: "You want to perform this action!",
-      		type: "warning",
-      		showCancelButton: true,
-      		confirmButtonText: "Yes!",
-      		cancelButtonText: "No!",
-      		closeOnConfirm: false,
-      		closeOnCancel: false
-      	}, function(isConfirm) {
-      		if (isConfirm) {
-      			swal("Deleted!", "Submitted Successfully.", "success");
-      		} else {
-      			swal("Cancelled", "Operation Aborted :)", "error");
-      		}
-      	});
-      });
+    //   $('.alertSwitch').click(function(){
+    //   	swal({
+    //   		title: "Are you sure?",
+    //   		text: "You want to perform this action!",
+    //   		type: "warning",
+    //   		showCancelButton: true,
+    //   		confirmButtonText: "Yes!",
+    //   		cancelButtonText: "No!",
+    //   		closeOnConfirm: false,
+    //   		closeOnCancel: false
+    //   	}, function(isConfirm) {
+    //   		if (isConfirm) {
+    //   			swal("Deleted!", "Submitted Successfully.", "success");
+    //   		} else {
+    //   			swal("Cancelled", "Operation Aborted :)", "error");
+    //   		}
+    //   	});
+    //   });
 
-    //   DELETE STUDENT ALERT
-    $('body').on( 'click', 'button.delstd', function () {
+    //   ALERT for updating student class
+    $('body').on( 'click', 'button.probtn', function () {
 
-        var table = $('#allStudentTable').DataTable();
-        var row = table.row( $(this).parents('tr') );
 
         var std_id = $(this).data('std_id');
         var std_name = $(this).data('std_name');
       	swal({
       		title: "Are you sure?",
-      		text: "You want to Remove "+std_name,
+      		text: "You want to promote all students classes ",
       		type: "warning",
       		showCancelButton: true,
       		confirmButtonText: "Yes!",
@@ -198,9 +206,9 @@
       	}, function(isConfirm) {
       		if (isConfirm) {
             req = $.ajax({
-                    url: 'http://localhost:5000/students',
+                    url: 'http://localhost:5000/promotion',
                     type:'get',
-                    data: {studentID: std_id, action:'delete'}
+                    data: {action:'update'}
                   }).done(function(data){
                   if (data.status == 'success'){
                         $.notify({
@@ -210,14 +218,10 @@
                         },{
                           type: "info"
                         });
-                        table
-                            .row(row)
-                            .remove()
-                            .draw();  
-                        swal("Deleted!", "Removed Successfully.", "success");
+                        swal("Promotion!", "Operation Successfully.", "success");
                   }else{
                     $.notify({
-                          title: "Failed to Remove : ",
+                          title: "Failed to update : ",
                           message: "Operation denied!",
                           icon: 'fa fa-exclamation-circle' 
                         },{
@@ -234,7 +238,7 @@
       });
 
 
-      //Get All Students
+      //Get All Students numbers
       $(document).ready(function(){
         req = $.ajax({
           url: 'http://localhost:5000/students',
@@ -261,21 +265,21 @@
         });
       
       // STUDENT STATUS UPDATE
-      $(document).on('click', '.alertSwitch', function(){
-        studentID = $(this).attr('studentID');
-        req = $.ajax({
-          url: 'http://localhost:5000/students',
-          type:'post',
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          data: JSON.stringify({studentID:studentID, status:'switch'})
-        });
-      });
+    //   $(document).on('click', '.alertSwitch', function(){
+    //     studentID = $(this).attr('studentID');
+    //     req = $.ajax({
+    //       url: 'http://localhost:5000/students',
+    //       type:'post',
+    //       contentType: "application/json; charset=utf-8",
+    //       dataType: "json",
+    //       data: JSON.stringify({studentID:studentID, status:'switch'})
+    //     });
+    //   });
       
-      $(document).on('click', '.moreInfoBtn', function(){
-        localStorage.setItem('currentStudent',$(this).data('id'));
-        localStorage.setItem('random_id',$(this).data('random'));
-      });
+    //   $(document).on('click', '.moreInfoBtn', function(){
+    //     localStorage.setItem('currentStudent',$(this).data('id'));
+    //     localStorage.setItem('random_id',$(this).data('random'));
+    //   });
     </script>
   </body>
 </html>
