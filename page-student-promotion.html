@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="GHA School Shop">
+
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Great Heights Academy">
+    <meta property="og:title" content="Great Heights Academy School Shop">
+
+    <meta property="og:description" content="GHA School Shop">
+    <title>GHA School Shop</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!-- Font-icon css-->
+    <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+  </head>
+  <body class="app sidebar-mini rtl">
+    <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="index.html">GHA School Shop</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <!-- Navbar Right Menu-->
+      <ul class="app-nav">
+        <!-- User Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li><a class="dropdown-item" href="index.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="static/images/user.png" alt="User Image">
+        <div>
+          <p class="app-sidebar__user-name">Admin Admin</p>
+          <p class="app-sidebar__user-designation">Shop Admin</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li><a class="app-menu__item" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Student Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item active" href="page-student-list.html"><i class="icon fa fa-circle-o"></i> Student List</a></li>
+            <li><a class="treeview-item" href="page-student-add.html"><i class="icon fa fa-circle-o"></i> Add New Student</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Staff Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="page-user-list.html"><i class="icon fa fa-circle-o"></i> Staff List</a></li>
+            <li><a class="treeview-item" href="page-user-add.html"><i class="icon fa fa-circle-o"></i> Add New Staff</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">My Shop</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Stock Management</a></li>
+            <li><a class="treeview-item" href="page-shop-purchase.html"><i class="icon fa fa-circle-o"></i> My Purchases</a></li>
+          </ul>
+        </li>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Reports</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="page-report-transaction.html"><i class="icon fa fa-circle-o"></i> Shopping Report</a></li>
+            <li><a class="treeview-item" href="page-report-comprehensive.html"><i class="icon fa fa-circle-o"></i> Comprehensive Report</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-th-list"></i> Student List</h1>
+          <p>List of Students</p>
+        </div>
+        <p><a href="javascript:history.back()">Previous Page <i class="fa fa-arrow-left fa-lg"></i></a></p>
+        <ul class="app-breadcrumb breadcrumb side">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">Students</li>
+          <li class="breadcrumb-item active"><a href="#">List</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body table-responsive">
+                <table class="table table-bordered table-hover table-sm">
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <table class="table table-hover table-bordered" id="allStudentTable">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Reg No.</th>
+                    <th>Name</th>
+                    <th>House</th>
+                    <th>Class</th>
+                    <th>Withrawal Limit</th>
+                    <th>Actions</th>
+                    
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Essential javascripts for application to work-->
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="static/js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="static/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="static/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#allStudentTable').DataTable();</script>
+    <!-- Page specific javascripts-->
+    <script type="text/javascript" src="static/js/plugins/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="static/js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        function studentlist(sList){
+          var len = $(sList).length;
+            var tr = "<tr>";
+            var i = 0;
+            for(i=0;i<len;i+=1)
+            {
+                tr += "<td>" + sList[i].status + "</td>";
+                tr += "<td>" +sList[i].id+"</td>";
+                tr += "<td>" + sList[i].name + "</td>";
+                tr += "<td>" + sList[i].House + "</td>";
+                tr += "<td>" + sList[i].Class + "</td>";
+                tr += "<td>" + sList[i].w_limit + "</td>";
+                tr += "<td>" + sList[i].name + "</td>";
+                tr += "</tr>";
+                $('#studentlist').append(tr);
+            }
+        }
+        
+      });
+
+      $('.alertSwitch').click(function(){
+      	swal({
+      		title: "Are you sure?",
+      		text: "You want to perform this action!",
+      		type: "warning",
+      		showCancelButton: true,
+      		confirmButtonText: "Yes!",
+      		cancelButtonText: "No!",
+      		closeOnConfirm: false,
+      		closeOnCancel: false
+      	}, function(isConfirm) {
+      		if (isConfirm) {
+      			swal("Deleted!", "Submitted Successfully.", "success");
+      		} else {
+      			swal("Cancelled", "Operation Aborted :)", "error");
+      		}
+      	});
+      });
+
+    //   DELETE STUDENT ALERT
+    $('body').on( 'click', 'button.delstd', function () {
+
+        var table = $('#allStudentTable').DataTable();
+        var row = table.row( $(this).parents('tr') );
+
+        var std_id = $(this).data('std_id');
+        var std_name = $(this).data('std_name');
+      	swal({
+      		title: "Are you sure?",
+      		text: "You want to Remove "+std_name,
+      		type: "warning",
+      		showCancelButton: true,
+      		confirmButtonText: "Yes!",
+      		cancelButtonText: "No!",
+      		closeOnConfirm: false,
+      		closeOnCancel: false
+      	}, function(isConfirm) {
+      		if (isConfirm) {
+            req = $.ajax({
+                    url: 'http://localhost:5000/students',
+                    type:'get',
+                    data: {studentID: std_id, action:'delete'}
+                  }).done(function(data){
+                  if (data.status == 'success'){
+                        $.notify({
+                          title: "Action Complete : ",
+                          message: "Operation Successful!",
+                          icon: 'fa fa-check' 
+                        },{
+                          type: "info"
+                        });
+                        table
+                            .row(row)
+                            .remove()
+                            .draw();  
+                        swal("Deleted!", "Removed Successfully.", "success");
+                  }else{
+                    $.notify({
+                          title: "Failed to Remove : ",
+                          message: "Operation denied!",
+                          icon: 'fa fa-exclamation-circle' 
+                        },{
+                          type: "info"
+                        });
+                  }
+                  
+                });
+      		} 
+          else {
+      			swal("Cancelled", "Operation Aborted :)", "error");
+      		}
+      	});
+      });
+
+
+      //Get All Students
+      $(document).ready(function(){
+        req = $.ajax({
+          url: 'http://localhost:5000/students',
+          type:'get'
+      });
+      req.done(function(data){
+          if (data.status == 'success'){
+            data.classes.forEach(function(item){
+              if(item[1]>0){
+                $('#tableBody').append("<tr><td>"+item[0]+"</td><td>"+item[1]+"</td></tr>");
+              }
+            });
+            data.students.forEach(function(item){
+              var status = '<div class="toggle-flip"><label><input type="checkbox" class="alertSwitch"  studentID='+item.id+' checked><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span></label></div>';
+              if (item.status == false){
+                status = '<div class="toggle-flip"><label><input type="checkbox" class="alertSwitch" studentID='+item.id+'><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span></label></div>';
+              }
+              $('#allStudentTable').DataTable().row.add(
+                [status, item.regNum, item.name, item.house, item.class, item.weeklyLimit, '<div class="btn-group" role="group" aria-label="Button group with nested dropdown"><button class="btn btn-info" type="button">Info</button><div class="btn-group" role="group"><button class="btn btn-info dropdown-toggle moreInfoBtn" data-regNum="'+item.regNum+'" data-id="'+item.id+'" data-random="'+item.random_id+'" id="btnGroupDrop3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-student-deposit.html">New Deposit</a><a class="dropdown-item" href="page-student-info.html">More Info</a></div></div></div><button class="btn btn-outline-danger delstd" data-std_id="'+item.id+'" data-std_name="'+item.name+'" type="button"><i class="icon fa fa-trash-o"></i> Delete</button>']
+              ).draw();
+            })
+          }}
+          );
+        });
+      
+      // STUDENT STATUS UPDATE
+      $(document).on('click', '.alertSwitch', function(){
+        studentID = $(this).attr('studentID');
+        req = $.ajax({
+          url: 'http://localhost:5000/students',
+          type:'post',
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: JSON.stringify({studentID:studentID, status:'switch'})
+        });
+      });
+      
+      $(document).on('click', '.moreInfoBtn', function(){
+        localStorage.setItem('currentStudent',$(this).data('id'));
+        localStorage.setItem('random_id',$(this).data('random'));
+      });
+    </script>
+  </body>
+</html>
