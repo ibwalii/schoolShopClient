@@ -110,7 +110,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            <section class="invoice">
+            <section class="invoice" id="tempCard">
               <div class="row mb-4">
                 <div class="col-6">
                   <h2 class="page-header"><i class="fa fa-globe"></i> Temporary Shopping Card</h2>
@@ -123,7 +123,7 @@
                 
               </div>
               <hr>
-              <div id="barcodeHolder">
+              <div id="barcodeHolder" style="margin:auto; padding-left: 200px;">
                 <svg class="barcode"
                     jsbarcode-format="upc"
                     jsbarcode-value="19877266721"
@@ -150,7 +150,7 @@
                 </div>
               </div> -->
               <div class="row d-print-none mt-2">
-                <div class="col-12 text-right"><a class="btn btn-primary" href="javascript:window.print();" target="_blank"><i class="fa fa-print"></i> Print</a></div>
+                <div class="col-12 text-right"><a class="btn btn-primary" href="" id="printBtn" target="_blank"><i class="fa fa-print"></i> Print</a></div>
               </div>
             </section>
           </div>
@@ -188,11 +188,25 @@
         $('.barcode').each(function () {
         JsBarcode(this, random_id, {
             format: 'CODE128', // Adjust the barcode format as needed
-            displayValue: true, // You can set this to true if you want to display the encoded value below the barcode
+            displayValue: false, // You can set this to true if you want to display the encoded value below the barcode
             height:200,
             width:4,
         }); });
         
+        // Print ID Card
+        $('#printBtn').on('click', function (e) {
+            e.preventDefault();
+            var divToPrint = $('#tempCard'); // Replace 'divToPrint' with the ID or selector for your target div
+            var printWindow = window.open('', '', 'width=800,height=600');
+            
+            printWindow.document.open();
+            printWindow.document.write('<html><head><link rel="stylesheet" href="path-to-your-styles.css" type="text/css" /></head><body onload="window.print()">' + divToPrint.html() + '</body></html>');
+            
+            printWindow.document.close();
+            setTimeout(function () {
+            printWindow.close();
+            }, 10);
+        });
 
         // GETTING DATE VALUES
         var today = new Date();
@@ -232,73 +246,73 @@
           });
           req.done(function(data){
 
-            $('#studentInfo').html('<div class="col-8"><div class="table-responsive" ><table class="table"><thead><tr><th>Name</th><th>'+data.name+'</th><td>Class</td><td>'+data.class+'</td></tr></thead><tbody><tr><th>House</th><td>'+data.house+'</td><th>Weekly Limit</th><td>₦ '+ data.weeklyLimit +'.00</td></tr><tr><th>Account Balance</th><th>₦ '+ data.balance +'.00</th><th>Total Transactions</th><th> 100</th></tr></tbody></table></div></div><div class="col-4"> <img src="http://localhost:5000/static/images/'+ data.passport +'" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student"></div>');
+            $('#studentInfo').html('<div class="col-8"><div class="table-responsive" ><table class="table"><thead><tr><th>Name</th><th>'+data.name+'</th><td>Class</td><td>'+data.class+'</td></tr></thead><tbody><tr><th>House</th><td>'+data.house+'</td><th>Weekly Limit</th><td>₦ '+ data.weeklyLimit +'.00</td></tr></tbody></table></div></div><div class="col-4"> <img src="http://localhost:5000/static/images/'+ data.passport +'" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student"></div>');
           });
 
         
-        data = JSON.stringify({regNum: currentStudentRegNum, startDate:weekday, endDate: today, statement:"1"});
-          req = $.ajax({
-            url: 'http://localhost:5000/reports',
-            type:'post',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            data: data
+        // data = JSON.stringify({regNum: currentStudentRegNum, startDate:weekday, endDate: today, statement:"1"});
+        //   req = $.ajax({
+        //     url: 'http://localhost:5000/reports',
+        //     type:'post',
+        //     contentType: "application/json; charset=utf-8",
+        //     dataType: "json",
+        //     data: data
 
-          });
-          req.done(function(data){
-              console.log(data);
-              var count = 1;
-              var keys = Object.keys(data);
-              for(var i=0; i<keys.length; i++){
-                  var key = keys[i];
-                  item = data[key];
-                  item.forEach(function(result){
-                      // console.log(result.balance);
-                  $('#studentStatement').append("<tr><td>"+count+"</td><td>₦ "+result.credit+".00</td><td>₦ "+result.debit+".00 </td><td>₦ "+result.balance+".00</td><td>"+key+"</td></tr>");
-                  });
-                  count++;
-              }
-          });
+        //   });
+        //   req.done(function(data){
+        //       console.log(data);
+        //       var count = 1;
+        //       var keys = Object.keys(data);
+        //       for(var i=0; i<keys.length; i++){
+        //           var key = keys[i];
+        //           item = data[key];
+        //           item.forEach(function(result){
+        //               // console.log(result.balance);
+        //           $('#studentStatement').append("<tr><td>"+count+"</td><td>₦ "+result.credit+".00</td><td>₦ "+result.debit+".00 </td><td>₦ "+result.balance+".00</td><td>"+key+"</td></tr>");
+        //           });
+        //           count++;
+        //       }
+        //   });
 
-          $('body').on('click', '#filterBtn', function () {
-        startdate = $('#startdate').val();
-        enddate = $('#enddate').val();
+    //     $('body').on('click', '#filterBtn', function () {
+    //     startdate = $('#startdate').val();
+    //     enddate = $('#enddate').val();
         
-        if (!enddate && !startdate) {
-          $('#startdate').val(yesterday)
-          $('#enddate').val(today);
-          startdate = yesterday;
-          enddate = today
-        }
-        else if (!enddate) {
-          enddate = today;
-          //alert("end "+enddate);
-        }
-          data = JSON.stringify({regNum: currentStudentRegNum, startDate:startdate, endDate: enddate, statement:"1"});
-          req = $.ajax({
-            url: 'http://localhost:5000/reports',
-            type:'post',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            data: data
+    //     if (!enddate && !startdate) {
+    //       $('#startdate').val(yesterday)
+    //       $('#enddate').val(today);
+    //       startdate = yesterday;
+    //       enddate = today
+    //     }
+    //     else if (!enddate) {
+    //       enddate = today;
+    //       //alert("end "+enddate);
+    //     }
+    //       data = JSON.stringify({regNum: currentStudentRegNum, startDate:startdate, endDate: enddate, statement:"1"});
+    //       req = $.ajax({
+    //         url: 'http://localhost:5000/reports',
+    //         type:'post',
+    //         contentType: "application/json; charset=utf-8",
+    //         dataType: "json",
+    //         data: data
 
-          });
-          req.done(function(data){
-              console.log(data);
-              $('#studentStatement').html('');
-              var count = 1;
-              var keys = Object.keys(data);
-              for(var i=0; i<keys.length; i++){
-                  var key = keys[i];
-                  item = data[key];
-                  item.forEach(function(result){
+    //       });
+    //       req.done(function(data){
+    //           console.log(data);
+    //           $('#studentStatement').html('');
+    //           var count = 1;
+    //           var keys = Object.keys(data);
+    //           for(var i=0; i<keys.length; i++){
+    //               var key = keys[i];
+    //               item = data[key];
+    //               item.forEach(function(result){
                   
-                  $('#studentStatement').append("<tr><td>"+count+"</td><td>₦ "+result.credit+".00</td><td>₦ "+result.debit+".00 </td><td>₦ "+result.balance+".00</td><td>"+key+"</td></tr>");
-                  });
-                  count++;
-              }
-          });
-      });
+    //               $('#studentStatement').append("<tr><td>"+count+"</td><td>₦ "+result.credit+".00</td><td>₦ "+result.debit+".00 </td><td>₦ "+result.balance+".00</td><td>"+key+"</td></tr>");
+    //               });
+    //               count++;
+    //           }
+    //       });
+    //   });
       });
 
       
