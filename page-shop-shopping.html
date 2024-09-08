@@ -238,7 +238,7 @@
       $('body').on('submit', '#searchStudentForm', function (e) {
         e.preventDefault();
         stdid = $('#stdid').val();
-        weeklySpending = int(0);
+        weeklySpending = parseInt(0);
         weeklyBalance = 0;
         weeklyLimit = 0;
         studentBalance = 0;
