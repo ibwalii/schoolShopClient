@@ -169,6 +169,9 @@
               });
               req.done(function (data) {
                 item = data.student;
+                // Reset weeklySpending for every request
+                let weeklySpending = 0;
+
                 item.transactions.forEach(function (item) {
                   var timestampStartweek = ((new Date(startWeek)).getTime());
                   var timestampEndtweek = ((new Date(endWeek)).getTime());
@@ -189,7 +192,36 @@
                 weeklyLimit = item.weeklyLimit;
                 studentBalance = item.balance;
 
-                $('#studentInfo').html('<div class="col-8"><div class="table-responsive"><table class="table"><thead><tr><th>Name</th><th>' + item.name + '</th><td>Class</td><td>' + item.class + '</td></tr></thead><tbody><tr><th>House</th><td>' + item.house + '</td><th>Weekly Limit</th><td>₦ ' + item.weeklyLimit + '.00</td></tr><tr><th>Account Balance</th><th>₦ ' + item.balance + '.00</th><th>Weekly Balance</th><th> ₦ ' + (item.weeklyLimit - weeklySpending) + '.00</th></tr></tbody></table></div></div><div class="col-4"> <img src="http://localhost:5000/static/images/' + item.passport + '" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student"></div>');
+                // $('#studentInfo').html('<div class="col-8"><div class="table-responsive"><table class="table"><thead><tr><th>Name</th><th>' + item.name + '</th><td>Class</td><td>' + item.class + '</td></tr></thead><tbody><tr><th>House</th><td>' + item.house + '</td><th>Weekly Limit</th><td>₦ ' + item.weeklyLimit + '.00</td></tr><tr><th>Account Balance</th><th>₦ ' + item.balance + '.00</th><th>Weekly Balance</th><th> ₦ ' + (item.weeklyLimit - weeklySpending) + '.00</th></tr></tbody></table></div></div><div class="col-4"> <img src="http://localhost:5000/static/images/' + item.passport + '" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student"></div>');
+
+                // Update the student information in the DOM
+                $('#studentInfo').html(`
+                    <div class="col-8">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th><th>${item.name}</th>
+                                        <td>Class</td><td>${item.class}</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>House</th><td>${item.house}</td>
+                                        <th>Weekly Limit</th><td>₦ ${item.weeklyLimit}.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Account Balance</th><th>₦ ${item.balance}.00</th>
+                                        <th>Weekly Balance</th><th>₦ ${weeklyBalance}.00</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img src="http://localhost:5000/static/images/${item.passport}" style="height: 150px; width: 150px;" class="img-fluid rounded-circle" alt="student">
+                    </div>
+                `);
 
                 $('html, body').animate({ scrollTop: $(document).height() }, 1200);
                 $("#amount").select();
