@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="GHA School Shop" />
+
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Great Heights Academy" />
+    <meta property="og:title" content="Great Heights Academy School Shop" />
+
+    <meta property="og:description" content="GHA School Shop" />
+    <title>GHA School Shop</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+    <!-- Font-icon css-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="static/css/font-awesome.min.css"
+    />
+  </head>
+  <body class="app sidebar-mini rtl">
+    <!-- Navbar-->
+    <header class="app-header">
+      <a class="app-header__logo" href="index.html">GHA School Shop</a>
+      <!-- Sidebar toggle button--><a
+        class="app-sidebar__toggle"
+        href="#"
+        data-toggle="sidebar"
+        aria-label="Hide Sidebar"
+      ></a>
+      <!-- Navbar Right Menu-->
+      <ul class="app-nav">
+        <!-- User Menu-->
+        <li class="dropdown">
+          <a
+            class="app-nav__item"
+            href="#"
+            data-toggle="dropdown"
+            aria-label="Open Profile Menu"
+            ><i class="fa fa-user fa-lg"></i
+          ></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li>
+              <a class="dropdown-item" href="index.html"
+                ><i class="fa fa-sign-out fa-lg"></i> Logout</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user">
+        <img
+          class="app-sidebar__user-avatar"
+          src="static/images/user.png"
+          alt="User Image"
+        />
+        <div>
+          <p class="app-sidebar__user-name">Admin Admin</p>
+          <p class="app-sidebar__user-designation">Shop Admin</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li>
+          <a class="app-menu__item" href="dashboard.html"
+            ><i class="app-menu__icon fa fa-dashboard"></i
+            ><span class="app-menu__label">Dashboard</span></a
+          >
+        </li>
+        <li class="treeview is-expanded">
+          <a class="app-menu__item" href="#" data-toggle="treeview"
+            ><i class="app-menu__icon fa fa-laptop"></i
+            ><span class="app-menu__label">Student Management</span
+            ><i class="treeview-indicator fa fa-angle-right"></i
+          ></a>
+          <ul class="treeview-menu">
+            <li>
+              <a class="treeview-item active" href="page-student-list.html"
+                ><i class="icon fa fa-circle-o"></i> Student List</a
+              >
+            </li>
+            <li>
+              <a class="treeview-item" href="page-student-add.html"
+                ><i class="icon fa fa-circle-o"></i> Add New Student</a
+              >
+            </li>
+          </ul>
+        </li>
+        
+        <li class="treeview">
+          <a class="app-menu__item" href="#" data-toggle="treeview"
+            ><i class="app-menu__icon fa fa-edit"></i
+            ><span class="app-menu__label">My Shop</span
+            ><i class="treeview-indicator fa fa-angle-right"></i
+          ></a>
+          <ul class="treeview-menu">
+            <li>
+              <a class="treeview-item" href="page-shop-stock.html"
+                ><i class="icon fa fa-circle-o"></i> Stock Management</a
+              >
+            </li>
+            <li>
+              <a class="treeview-item" href="page-shop-purchase.html"
+                ><i class="icon fa fa-circle-o"></i> My Purchases</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a class="app-menu__item" href="#" data-toggle="treeview"
+            ><i class="app-menu__icon fa fa-file-text"></i
+            ><span class="app-menu__label">Reports</span
+            ><i class="treeview-indicator fa fa-angle-right"></i
+          ></a>
+          <ul class="treeview-menu">
+            <li>
+              <a class="treeview-item" href="page-report-transaction.html"
+                ><i class="icon fa fa-circle-o"></i> Shopping Report</a
+              >
+            </li>
+            <li>
+              <a class="treeview-item" href="page-report-comprehensive.html"
+                ><i class="icon fa fa-circle-o"></i> Comprehensive Report</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+  <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-th-list"></i> Stock Management</h1>
+        </div>
+        <p>
+          <a href="javascript:history.back()"
+            >Previous Page <i class="fa fa-arrow-left fa-lg"></i
+          ></a>
+        </p>
+        <ul class="app-breadcrumb breadcrumb side">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">Shop</li>
+          <li class="breadcrumb-item active"><a href="#">List</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <h3 class="tile-title">Stock Management</h3>
+            <div class="tile-body">
+              <div class="mb-3">
+                <button class="btn btn-primary" id="openAddModal">Add Item</button>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="stockManagementTable">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Quantity</th>
+                      <th>Unit Price</th>
+                      <th>Purchase Price</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add / Edit Modal -->
+      <div class="modal fade" id="stockModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="stockModalTitle">Add Item</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="stockModalForm">
+                <div class="form-group">
+                  <label for="modalItemName">Item Name</label>
+                  <input type="text" class="form-control" id="modalItemName" required />
+                </div>
+                <div class="form-group">
+                  <label for="modalQuantity">Quantity</label>
+                  <input type="number" class="form-control" id="modalQuantity" min="0" required />
+                </div>
+                <div class="form-group">
+                  <label for="modalUnitPrice">Unit Price</label>
+                  <input type="number" class="form-control" id="modalUnitPrice" min="0" required />
+                </div>
+                <div class="form-group">
+                  <label for="modalPurchasePrice">Purchase Price</label>
+                  <input type="number" class="form-control" id="modalPurchasePrice" min="0" required />
+                </div>
+                <div class="form-group">
+                  <label for="modalStatus">Status</label>
+                  <select id="modalStatus" class="form-control">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                  </select>
+                </div>
+                <input type="hidden" id="modalItemID" />
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" id="modalSaveBtn" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="static/js/plugins/pace.min.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="GHA School Shop" />
+
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Great Heights Academy" />
+    <meta property="og:title" content="Great Heights Academy School Shop" />
+
+    <meta property="og:description" content="GHA School Shop" />
+    <title>GHA School Shop</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="static/css/font-awesome.min.css"
+    />
+  </head>
+  <body class="app sidebar-mini rtl">
+      <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="index.html">GHA School Shop</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <!-- Navbar Right Menu-->
+      <ul class="app-nav">
+        <!-- User Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li><a class="dropdown-item" href="index.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user">
+        <img
+          class="app-sidebar__user-avatar"
+          src="static/images/user.png"
+          alt="User Image"
+        />
+        <div>
+          <p class="app-sidebar__user-name">Admin Admin</p>
+          <p class="app-sidebar__user-designation">Shop Admin</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li>
+          <a class="app-menu__item" href="dashboard.html"
+            ><i class="app-menu__icon fa fa-dashboard"></i
+            ><span class="app-menu__label">Dashboard</span></a
+          >
+        </li>
+        <li class="treeview is-expanded">
+          <a class="app-menu__item" href="#" data-toggle="treeview"
+            ><i class="app-menu__icon fa fa-laptop"></i
+            ><span class="app-menu__label">Student Management</span
+            ><i class="treeview-indicator fa fa-angle-right"></i
+          ></a>
+          <ul class="treeview-menu">
+            <li>
+              <a class="treeview-item active" href="page-student-list.html"
+                ><i class="icon fa fa-circle-o"></i> Student List</a
+              >
+            </li>
+            <li>
+              <a class="treeview-item" href="page-student-add.html"
+                ><i class="icon fa fa-circle-o"></i> Add New Student</a
+              >
+            </li>
+          </ul>
+        </li>
+        
+        <li class="treeview">
+          <a class="app-menu__item" href="#" data-toggle="treeview"
+            ><i class="app-menu__icon fa fa-edit"></i
+            ><span class="app-menu__label">My Shop</span
+            ><i class="treeview-indicator fa fa-angle-right"></i
+          ></a>
+          <ul class="treeview-menu">
+            <li>
+              <a class="treeview-item" href="#"
+                ><i class="icon fa fa-circle-o"></i> Stock Management</a
+              >
+            </li>
+            <li>
+              <a class="treeview-item" href="page-shop-purchase.html"
+                ><i class="icon fa fa-circle-o"></i> My Purchases</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a class="app-menu__item" href="#" data-toggle="treeview"
+            ><i class="app-menu__icon fa fa-file-text"></i
+            ><span class="app-menu__label">Reports</span
+            ><i class="treeview-indicator fa fa-angle-right"></i
+          ></a>
+          <ul class="treeview-menu">
+            <li>
+              <a class="treeview-item" href="page-report-transaction.html"
+                ><i class="icon fa fa-circle-o"></i> Shopping Report</a
+              >
+            </li>
+            <li>
+              <a class="treeview-item" href="page-report-comprehensive.html"
+                ><i class="icon fa fa-circle-o"></i> Comprehensive Report</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+  <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-th-list"></i> Stock Management</h1>
+          <!-- <p>List of tudents</p> -->
+        </div>
+        <p>
+          <a href="javascript:history.back()"
+            >Previous Page <i class="fa fa-arrow-left fa-lg"></i
+          ></a>
+        </p>
+        <ul class="app-breadcrumb breadcrumb side">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">Shop</li>
+          <li class="breadcrumb-item active"><a href="#">List</a></li>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tile">
+              <h3 class="tile-title">Stock Management</h3>
+              <div class="tile-body">
+                <div class="mb-3">
+                  <button class="btn btn-primary" id="openAddModal">Add Item</button>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="table table-hover table-bordered" id="stockManagementTable">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Purchase Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add / Edit Modal -->
+        <div class="modal fade" id="stockModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="stockModalTitle">Add Item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="stockModalForm">
+                  <div class="form-group">
+                    <label for="modalItemName">Item Name</label>
+                    <input type="text" class="form-control" id="modalItemName" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="modalQuantity">Quantity</label>
+                    <input type="number" class="form-control" id="modalQuantity" min="0" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="modalUnitPrice">Unit Price</label>
+                    <input type="number" class="form-control" id="modalUnitPrice" min="0" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="modalPurchasePrice">Purchase Price</label>
+                    <input type="number" class="form-control" id="modalPurchasePrice" min="0" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="modalStatus">Status</label>
+                    <select id="modalStatus" class="form-control">
+                      <option value="active">Active</option>
+                      <option value="inactive">Inactive</option>
+                    </select>
+                  </div>
+                  <input type="hidden" id="modalItemID" />
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="modalSaveBtn" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+                </div>
+                <div class="tile-footer">
+                  <div class="row">
+                    <div class="col-md-8 col-md-offset-3">
+                      <button class="btn btn-primary"  type = "submit" id="addStockButton"><i class="fa fa-fw fa-lg fa-check-circle"></i>Add
+                        Stock</button>
+  
+                        <a class="btn btn-secondary" href="#"><i
+                          class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                    </div>
+                  </div>
+                </div>
+                  <label class="control-label col-md-2">Item Name</label>
+                  <div class="col-md-8">
+                    <input class="form-control" type="text" id="itemName" name="itemName" required />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="control-label col-md-2">Quantity</label>
+                  <div class="col-md-8">
+                    <input class="form-control" type="number" id="itemQuantity" name="itemQuantity" required min="0" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="control-label col-md-2">Unit Price</label>
+                  <div class="col-md-8">
+                    <input class="form-control" type="number" id="unitPrice" name="unitPrice" required min="0" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="control-label col-md-2">Purchase Price</label>
+                  <div class="col-md-8">
+                    <input class="form-control" type="number" id="purchasePrice" name="purchasePrice" required min="0" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="control-label col-md-2">Status</label>
+                  <div class="col-md-8">
+                    <select class="form-control" id="itemStatus" name="itemStatus">
+                      <option value="active">Active</option>
+                      <option value="inactive">Inactive</option>
+                    </select>
+                  </div>
+                </div>
+                <input type="hidden" id="editItemID" />
+                <div class="tile-footer">
+                  <button class="btn btn-primary" type="submit" id="submitBtn">Add Item</button>
+                  <button class="btn btn-warning" type="button" id="cancelEditBtn" style="display:none;">Cancel Edit</button>
+                </div>
+                id="stockManagementTable"
+              >
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Purchase Price</th>
+                    <th>Selling Price</th>
+                    <th>Purchase Date</th>
+                    <!-- <th>Quantity Sold</th>
+                    <th>Quantity Remaining</th> -->
+                  </tr>
+                  <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Purchase Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+    // Stock CRUD logic
+    const apiUrl = '/stock';
+    function fetchStock() {
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 'success') {
+            renderTable(data.items);
+          }
+        });
+    }
+
+    function renderTable(items) {
+      let html = items.map(item => `
+        <tr>
+          <td>${item.name}</td>
+          <td>${item.quantity}</td>
+          <td>${item.unit_price}</td>
+          <td>${item.purchase_price}</td>
+          <td>${item.status}</td>
+          <td>
+            <button class="btn btn-info btn-sm" onclick="editItem(${item.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteItem(${item.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+      document.getElementById('tableBody').innerHTML = html;
+    }
+
+    document.getElementById('stockAddForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const id = document.getElementById('editItemID').value;
+      const name = document.getElementById('itemName').value;
+      const quantity = document.getElementById('itemQuantity').value;
+      const unit_price = document.getElementById('unitPrice').value;
+      const purchase_price = document.getElementById('purchasePrice').value;
+      const status = document.getElementById('itemStatus').value;
+      const payload = {
+        name, quantity, unit_price, purchase_price, status
+      };
+      if (id) {
+        payload.itemID = id;
+        fetch(apiUrl, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 'success') {
+            resetForm();
+            fetchStock();
+          } else {
+            alert(data.message || 'Update failed');
+          }
+        });
+      } else {
+        fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 'success') {
+            resetForm();
+            fetchStock();
+          } else {
+            alert(data.message || 'Add failed');
+          }
+        });
+      }
+    });
+
+    function editItem(id) {
+      fetch(apiUrl + '?itemID=' + id)
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 'success') {
+            const item = data.item;
+            document.getElementById('itemName').value = item.name;
+            document.getElementById('itemQuantity').value = item.quantity;
+            document.getElementById('unitPrice').value = item.unit_price;
+            document.getElementById('purchasePrice').value = item.purchase_price;
+            document.getElementById('itemStatus').value = item.status;
+            document.getElementById('editItemID').value = item.id;
+            document.getElementById('submitBtn').textContent = 'Update Item';
+            document.getElementById('cancelEditBtn').style.display = '';
+          }
+        });
+    }
+
+    document.getElementById('cancelEditBtn').addEventListener('click', function() {
+      resetForm();
+    });
+
+    function resetForm() {
+      document.getElementById('stockAddForm').reset();
+      document.getElementById('editItemID').value = '';
+      document.getElementById('submitBtn').textContent = 'Add Item';
+      document.getElementById('cancelEditBtn').style.display = 'none';
+    }
+
+    function deleteItem(id) {
+      if (!confirm('Delete this item?')) return;
+      fetch(apiUrl, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ itemID: id })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          fetchStock();
+        } else {
+          alert(data.message || 'Delete failed');
+        }
+      });
+    }
+
+    window.editItem = editItem;
+    window.deleteItem = deleteItem;
+    window.onload = fetchStock;
+
+    
+  window.onload =  function(){
+        let name = document.getElementById('productName').value
+        let quantity = document.getElementById('productQuantity').value
+
+        console.log("helo")
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://shop.apps.mrteey.com/purchases', true)
+        xhr.onload = function(){
+          if(this.status == 200){
+            // location.reload()
+            let data = JSON.parse(this.response)
+            let eachData = data.purchases.map(function(aData){
+                return `
+                <tr>
+                 <td> ${aData.item} </td>
+                 <td> ${aData.quantity} </td>
+                 <td> ${aData.cost} </td>
+                 <td> ${aData.price} </td>
+                 <td> ${aData.date} </td>
+                 <td><button type = "submit" onClick = "deleteRow(${aData.id})" class="btn btn-outline-danger"><i class="icon fa fa-trash-o"></i>Delete</button>
+                </tr>`
+              }).join('')
+            document.getElementById('tableBody').innerHTML = eachData
+          }
+      }
+      xhr.send()
+      }
+      function deleteRow(purchase_id){
+        let xhr = new XMLHttpRequest;
+        xhr.open('DELETE',`https://shop.apps.mrteey.com/purchases?purchaseID=${purchase_id}`, true);
+        xhr.onload = function(){
+          if(this.status == 200){
+            location.reload()
+            console.log('Product Deleted')
+          }else{
+          }
+        }
+        xhr.send()
+      }
+ </script>
+      <!-- Essential javascripts for application to work--> -->
+  <script src="static/js/jquery-3.2.1.min.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/main.js"></script>
+  <!-- The javascript plugin to display page loading on top-->
+  <script src="static/js/plugins/pace.min.js"></script>
+
+  </body>
+  </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Page specific javascripts-->
+
+    <!-- Data table plugin-->
+    <!-- <script
+      type="text/javascript"
+      src="static/js/plugins/jquery.dataTables.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/js/plugins/dataTables.bootstrap.min.js"
+    ></script>
+    <script type="text/javascript">
+      $("#allStudentTable").DataTable();
+    </script>
+    <!-- Page specific javascripts-->
+    <!-- <script
+      type="text/javascript"
+      src="static/js/plugins/bootstrap-notify.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/js/plugins/sweetalert.min.js"
+    ></script> -->
+        <!-- <script type="text/javascript">
+      $(document).ready(function () {
+        function studentlist(sList) {
+          var len = $(sList).length;
+          var tr = "<tr>";
+          var i = 0;
+          for (i = 0; i < len; i += 1) {
+            tr += "<td>" + sList[i].status + "</td>";
+            tr += "<td>" + sList[i].id + "</td>";
+            tr += "<td>" + sList[i].name + "</td>";
+            tr += "<td>" + sList[i].House + "</td>";
+            tr += "<td>" + sList[i].Class + "</td>";
+            tr += "<td>" + sList[i].w_limit + "</td>";
+            tr += "<td>" + sList[i].name + "</td>";
+            tr += "</tr>";
+            $("#studentlist").append(tr);
+          }
+        }
+      });
+
+      $(".alertSwitch").click(function () {
+        swal(
+          {
+            title: "Are you sure?",
+            text: "You want to perform this action!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes!",
+            cancelButtonText: "No!",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+          },
+          function (isConfirm) {
+            if (isConfirm) {
+              swal("Deleted!", "Submitted Successfully.", "success");
+            } else {
+              swal("Cancelled", "Operation Aborted :)", "error");
+            }
+          }
+        );
+      });
+
+      //   DELETE STUDENT ALERT
+      $("body").on("click", "button.delstd", function () {
+        var table = $("#allStudentTable").DataTable();
+        var row = table.row($(this).parents("tr"));
+
+        var std_id = $(this).data("std_id");
+        var std_name = $(this).data("std_name");
+        swal(
+          {
+            title: "Are you sure?",
+            text: "You want to Remove " + std_name,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes!",
+            cancelButtonText: "No!",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+          },
+          function (isConfirm) {
+            if (isConfirm) {
+              req = $.ajax({
+        beforeSend: function(r){
+            r.setRequestHeader("Bypass-Tunnel-Reminder")
+        },
+        url: "http://shop.apps.mrteey.com/students",
+                type: "get",
+                data: { studentID: std_id, action: "delete" },
+              }).done(function (data) {
+                if (data.status == "success") {
+                  $.notify(
+                    {
+                      title: "Action Complete : ",
+                      message: "Operation Successful!",
+                      icon: "fa fa-check",
+                    },
+                    {
+                      type: "info",
+                    }
+                  );
+                  table.row(row).remove().draw();
+                  swal("Deleted!", "Removed Successfully.", "success");
+                } else {
+                  $.notify(
+                    {
+                      title: "Failed to Remove : ",
+                      message: "Operation denied!",
+                      icon: "fa fa-exclamation-circle",
+                    },
+                    {
+                      type: "info",
+                    }
+                  );
+                }
+              });
+            } else {
+              swal("Cancelled", "Operation Aborted :)", "error");
+            }
+          }
+        );
+      });
+
+      //Get All Students
+      $(document).ready(function () {
+        req = $.ajax({
+          url: "http://shop.apps.mrteey.com/students",
+          type: "get",
+        });
+        req.done(function (data) {
+          if (data.status == "success") {
+            data.classes.forEach(function (item) {
+              if (item[1] > 0) {
+                $("#tableBody").append(
+                  "<tr><td>" + item[0] + "</td><td>" + item[1] + "</td></tr>"
+                );
+              }
+            });
+            data.students.forEach(function (item) {
+              var status =
+                '<div class="toggle-flip"><label><input type="checkbox" class="alertSwitch"  studentID=' +
+                item.id +
+                ' checked><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span></label></div>';
+              if (item.status == false) {
+                status =
+                  '<div class="toggle-flip"><label><input type="checkbox" class="alertSwitch" studentID=' +
+                  item.id +
+                  '><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span></label></div>';
+              }
+              $("#allStudentTable")
+                .DataTable()
+                .row.add([
+                  status,
+                  item.regNum,
+                  item.name,
+                  item.house,
+                  item.class,
+                  item.weeklyLimit,
+                  '<div class="btn-group" role="group" aria-label="Button group with nested dropdown"><button class="btn btn-info" type="button">Info</button><div class="btn-group" role="group"><button class="btn btn-info dropdown-toggle moreInfoBtn" data-regNum="' +
+                    item.regNum +
+                    '" data-id="' +
+                    item.id +
+                    '" id="btnGroupDrop3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-student-deposit.html">New Deposit</a><a class="dropdown-item" href="page-student-info.html">More Info</a></div></div></div><button class="btn btn-outline-danger delstd" data-std_id="' +
+                    item.id +
+                    '" data-std_name="' +
+                    item.name +
+                    '" type="button"><i class="icon fa fa-trash-o"></i> Delete</button>',
+                ])
+                .draw();
+            });
+          }
+        });
+      });
+
+      // STUDENT STATUS UPDATE
+      $(document).on("click", ".alertSwitch", function () {
+        studentID = $(this).attr("studentID");
+        req = $.ajax({
+          url: "http://shop.apps.mrteey.com/students",
+          type: "post",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: JSON.stringify({ studentID: studentID, status: "switch" }),
+        });
+      });
+
+      $(document).on("click", ".moreInfoBtn", function () {
+        localStorage.setItem("currentStudent", $(this).data("id"));
+      });
+    </script> -->
+  </body>
+</html>
