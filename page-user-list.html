@@ -79,13 +79,13 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i> Student List</h1>
-          <p>List of Students</p>
+          <h1><i class="fa fa-th-list"></i> Staff List</h1>
+          <p>List of Staff</p>
         </div>
         <p><a href="javascript:history.back()">Previous Page <i class="fa fa-arrow-left fa-lg"></i></a></p>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">Students</li>
+          <li class="breadcrumb-item">Staff</li>
           <li class="breadcrumb-item active"><a href="#">List</a></li>
         </ul>
       </div>
@@ -128,39 +128,44 @@
     <script type="text/javascript" src="static/js/plugins/bootstrap-notify.min.js"></script>
     <script type="text/javascript" src="static/js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript">
-    //   GET ALL STAFF
+    // GET ALL STAFF and populate table with accurate columns
     $(document).ready(function(){
-        req = $.ajax({
-          url: 'http://localhost:5000/users',
-          type:'get'
-      });
-      req.done(function(data){
-          if (data.users.length > 0){
-            data.users.forEach(function(item){
-              $('#staffListTable').DataTable().row.add(
-                [item.name, item.name, item.role, item.role, '<button class="btn btn-info" data-stf_id="'+item.id+'" data-std_name="'+item.name+'" type="button"><i class="icon fa fa-trash-o"></i> Update</button> <button class="btn btn-outline-danger delstf" data-stf_id="'+item.id+'" data-stf_name="'+item.name+'" type="button"><i class="icon fa fa-trash-o"></i> Delete</button>']
-              ).draw();
-            })
-          }}
-        );
-    });
-    
-      //   DELETE STAFF ALERT
-    $('body').on( 'click', 'button.delstf', function () {
-
         var table = $('#staffListTable').DataTable();
-        var row = table.row( $(this).parents('tr') );
-
-        var stf_id = $(this).data('stf_id');
-        var std_name = $(this).data('stf_name');
-        req = $.ajax({
-                    url: 'http://localhost:5000/users',
-                    type:'get',
-                    data: {userID: stf_id, action:'delete'}
-                  });
-                  req.done(function(result){
-                    console.log(result);
-                  });
+        $.ajax({
+          url: 'http://localhost:5000/users',
+          type:'GET'
+        }).done(function(data){
+          if (data && data.users && data.users.length > 0){
+            data.users.forEach(function(item){
+              // read hyphenated field safely and provide sensible fallbacks
+              var lastLogin = item['last-login'] || item.lastLogin || item.lastlogin || 'Never';
+              // username might be missing or named differently; try multiple keys
+              var username = item.username || item.user_name || item.userName || '';
+              var role = item.role || '';
+              var actions = '<a class="btn btn-info" href="page-user-update-password.html?user_id='+item.id+'&name='+encodeURIComponent(item.name)+'"><i class="icon fa fa-key"></i> Update Password</a> ' +
+                            '<button class="btn btn-outline-danger delstf" data-stf_id="'+item.id+'" data-stf_name="'+item.name+'" type="button"><i class="icon fa fa-trash-o"></i> Delete</button>';
+              table.row.add([item.name || '', username, role, lastLogin, actions]).draw(false);
+            });
+          }
+        });
+    });
+     
+      //   DELETE STAFF ALERT
+     $('body').on( 'click', 'button.delstf', function () {
+ 
+         var table = $('#staffListTable').DataTable();
+         var row = table.row( $(this).parents('tr') );
+ 
+         var stf_id = $(this).data('stf_id');
+         var std_name = $(this).data('stf_name');
+         req = $.ajax({
+                     url: 'http://localhost:5000/users',
+                     type:'get',
+                     data: {userID: stf_id, action:'delete'}
+                   });
+                   req.done(function(result){
+                     console.log(result);
+                   });
         // swal({
         //   title: "Are you surrrrre?",
         //   text: "You want to Remove "+std_name,
@@ -207,7 +212,7 @@
         //     swal("Cancelled", "Operation Aborted :)", "error");
         //   }
         // });
-        });
+         });
 
     </script>
     
