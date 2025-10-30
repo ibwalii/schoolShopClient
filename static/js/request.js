@@ -1,29 +1,32 @@
-$('#loginform').on('submit', function(){
+$('#loginform').on('submit', function(event) {
     event.preventDefault();
-    username = $('#username').val();
-    password = $('#password').val();
-    req = $.ajax({
+    const username = $('#username').val();
+    const password = $('#password').val();
+
+    $.ajax({
         url: 'http://127.0.0.1:5000/login',
-        type:'post',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify({username:username, password:password})
-    });
-    req.done(function(data){
-        
-        if (data.status == 'success'){
-            if(data.user.role == 'salesrep'){
-                location.replace('page-shop-shopping.html')
-            }else{
+        type: 'post',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify({ username, password }),
+        xhrFields: {
+            withCredentials: true // Crucial for sending cookies
+        }
+    })
+    .done(function(data) {
+        if (data.status === 'success') {
+            // No need to store sensitive data in localStorage
+            if (data.user.role === 'salesrep') {
+                location.replace('page-shop-shopping.html');
+            } else {
                 location.replace('dashboard.html');
             }
-            localStorage.setItem('username', username);
-            localStorage.setItem('userID', data.user.id);
-            localStorage.setItem('salesToday', data.salesToday);
-            localStorage.setItem('allStudents', data.students);
-            localStorage.setItem('inactiveAccounts', data.inactiveAccounts);
-        }else{
-            alert('Invalid details');
+        } else {
+            alert('Login failed: ' + data.message);
         }
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        // Handle login failure
+        alert('Login failed: ' + jqXHR.responseJSON.message);
     });
 });
